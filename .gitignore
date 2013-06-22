@@ -18,5 +18,6 @@ composer.phar
 nbproject/
 .idea/
 *.tmproj
+.settings
 .project
-
+.buildpath
