@@ -1,0 +1,3 @@
+usec_student_home:
+    resource: "@USECStudentBundle/Resources/config/routing.yml"
+    prefix:   /

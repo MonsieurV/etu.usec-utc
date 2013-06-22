@@ -1,0 +1,17 @@
+homepage:
+    pattern:  /
+    defaults: { _controller: USECStudentBundle:Default:index }
+
+subscription_form:
+   pattern:  /form
+   defaults: { _controller: USECStudentBundle:Subscription:form }
+
+subscription_process:
+   pattern:  /process
+   defaults: { _controller: USECStudentBundle:Subscription:process }
+   requirements:
+       _method:  POST
+
+studies_available:
+    pattern:  /etudes
+    defaults: { _controller: USECStudentBundle:Default:studies }

@@ -1,0 +1,18 @@
+USEC\StudentBundle\Entity\Student:
+  properties:
+    email:
+      - NotBlank: ~
+    phone:
+      - NotBlank: ~
+    name:
+      - NotBlank: ~
+    firstName:
+      - NotBlank: ~
+    loginUtc:
+      - NotBlank: ~
+    course:
+      - NotBlank: ~
+    endCourseSemester:
+      - NotBlank: ~
+    creationDate:
+      - NotBlank: ~

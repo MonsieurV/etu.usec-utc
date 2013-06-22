@@ -1,0 +1,15 @@
+<!-- Jumbotron -->
+<div class="jumbotron" id="subscription">
+  <h1>Où est-ce qu'on signe ?</h1>
+  <p class="lead">Vous pouvez vous inscrire sur notre liste de consultants potentiels : cela nous permettra de vous contacter dès que nous aurons une étude à vous proposer !</p>
+  <a class="btn btn-large btn-primary" href="#subscription-modal" data-toggle="modal">Inscrivez-vous en cliquant ici</a>
+</div>
+
+<!-- Modal -->
+<div id="subscription-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Inscription sur la liste des consultants</h3>
+  </div>
+  {% render 'USECStudentBundle:Subscription:form' %}
+</div>
