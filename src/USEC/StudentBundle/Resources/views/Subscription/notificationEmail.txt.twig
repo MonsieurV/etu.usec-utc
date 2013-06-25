@@ -1,0 +1,30 @@
+Bonjour {{ student.firstName }} {{ student.name }},
+
+Vous venez de vous inscrire sur la plateforme étudiante de l'USEC (http://etu.usec-utc.fr), merci !
+
+
+Voici les détails de votre inscription :
+
+--  Coordonnées  --
+Prénom              : {{ student.firstName }}
+Nom                 : {{ student.name }}
+Email               : {{ student.email }}
+Login UTC           : {{ student.loginUtc }}
+Téléphone           : {{ student.phone }}
+Branche             : {{ student.course }}
+Semestre de sortie  : {{ student.endCourseSemester }}
+
+--  Compétences  --
+{{ student.skills }}
+
+-- Intéressé par --
+{{ student.interestedIn }}
+
+--  Motivations  --
+{{ student.motivation }}
+
+
+Cordialement,
+L'USEC.
+_______________________________________________________
+Cet email a été édité automatiquement par etu.usec-utc. 

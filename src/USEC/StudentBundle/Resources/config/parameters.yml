@@ -1,0 +1,4 @@
+parameters:
+    forward_subscription_to: [yoan.tournade@gmail.com, rh@usec-utc.fr, contact@usec-utc.fr]
+    forward_subscription_from: dsi@usec-utc.fr
+    notification_subscription_from: contact@usec-utc.fr

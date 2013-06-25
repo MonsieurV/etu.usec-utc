@@ -57,7 +57,25 @@ class SubscriptionController extends Controller
 	    	$em = $this->getDoctrine()->getManager();
 	    	$em->persist($student);
 	    	$em->flush();
+	    	$this->onSubscription($student);
 	    	return new Response(json_encode(array('status' => true)), 200, array('Content-Type', 'application/json'));
     	}
+    }
+    
+    protected function onSubscription(Student $student) {
+    	// Send a notification to the suscriber.
+    	$message = \Swift_Message::newInstance()
+    	->setSubject('[USEC][PLATEFORME-ETU] Votre inscription a bien été prise en compte')
+    	->setFrom($this->container->getParameter('notification_subscription_from'))
+    	->setTo($student->getEmail())
+    	->setBody($this->renderView('USECStudentBundle:Subscription:notificationEmail.txt.twig', array('student' => $student)));
+    	$this->get('mailer')->send($message);
+    	// Send an email to USEC team.
+    	$message = \Swift_Message::newInstance()
+	    	->setSubject('[USEC][PLATEFORME-ETU] Inscription de ' . $student->getFirstName() . ' ' . $student->getName())
+	    	->setFrom($this->container->getParameter('forward_subscription_from'))
+	    	->setTo($this->container->getParameter('forward_subscription_to'))
+	    	->setBody($this->renderView('USECStudentBundle:Subscription:forwardEmail.txt.twig', array('student' => $student)));
+    	$this->get('mailer')->send($message);
     }
 }
