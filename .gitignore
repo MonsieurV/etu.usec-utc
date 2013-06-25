@@ -21,3 +21,4 @@ nbproject/
 .settings
 .project
 .buildpath
+app/config/config_dev.yml
