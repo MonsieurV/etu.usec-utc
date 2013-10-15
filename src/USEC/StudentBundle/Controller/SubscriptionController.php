@@ -10,24 +10,8 @@ use USEC\StudentBundle\Entity\Student;
 class SubscriptionController extends Controller
 {
     public function formAction() {
-    	// Generate next semesters abreviations (A12, P13, A13, etc.).
-	    $currentYear = (int) date('y');
-			$currentMonth = (int) date('n');
-			$currentSemester = 'A';
-			if($currentMonth >= 2 && $currentMonth <= 8) {
-				// Printemps (Février, ..., Août).
-				$currentSemester = 'P';
-			} // Else : Automne (Septembre, ..., Janvier).
-			for($i = 0; $i < 11; $i++) {
-				$nextSemesters[] = $currentSemester . (($currentYear < 10) ? 0 . $currentYear : $currentYear);
-				if($currentSemester == 'A')
-					$currentYear++;
-				if($currentYear == 100)
-					$currentYear = 00;
-				$currentSemester = ($currentSemester == 'A') ? 'P' : 'A';
-			}
     	return $this->render('USECStudentBundle:Subscription:new.html.twig', array(
-    			'nextSemesters' => $nextSemesters,
+    			'nextSemesters' => self::getNextSemestersAbrev(),
     	));
     }
     
@@ -77,5 +61,27 @@ class SubscriptionController extends Controller
 	    	->setTo($this->container->getParameter('forward_subscription_to'))
 	    	->setBody($this->renderView('USECStudentBundle:Subscription:forwardEmail.txt.twig', array('student' => $student)));
     	$this->get('mailer')->send($message);
+    }
+    
+    public static function getNextSemestersAbrev($timestamp = NULL) {
+    	if($timestamp == NULL)
+    		$timestamp = time();
+    	// Generate next semesters abreviations (A12, P13, A13, etc.).
+    	$currentYear = (int) date('y', $timestamp);
+    	$currentMonth = (int) date('n', $timestamp);
+    	$currentSemester = 'A';
+    	if($currentMonth >= 2 && $currentMonth <= 8) {
+    		// Printemps (Février, ..., Août).
+    		$currentSemester = 'P';
+    	} // Else : Automne (Septembre, ..., Janvier).
+    	for($i = 0; $i < 11; $i++) {
+    		$nextSemesters[] = $currentSemester . (($currentYear < 10) ? 0 . $currentYear : $currentYear);
+    		if($currentSemester == 'A')
+    			$currentYear++;
+    		if($currentYear == 100)
+    			$currentYear = 00;
+    		$currentSemester = ($currentSemester == 'A') ? 'P' : 'A';
+    	}
+    	return $nextSemesters;
     }
 }
