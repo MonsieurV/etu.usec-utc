@@ -1,113 +1,95 @@
 <?php
-
 namespace USEC\StudentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * Student
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="USEC\StudentBundle\Repository\StudentRepository")
+ * @ORM\Entity(repositoryClass="USEC\StudentBundle\Entity\StudentRepository")
  */
-class Student
+class Student implements UserInterface, \Serializable, EquatableInterface
 {
+	const DEFAULT_ROLE = 'ROLE_UTC_CAS';
+	
 	/**
-	 * @var integer
-	 *
 	 * @ORM\Column(name="id", type="integer")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	private $id;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="email", type="string", length=255)
-	 */
-	private $email;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="phone", type="string", length=255)
-	 */
-	private $phone;
 	
 	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="first_name", type="string", length=255)
+	 * The username used for the CAS is the UTC login.
+	 * 
+	 * @ORM\Column(name="username", type="string", length=255)
 	 */
-	private $firstName;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="name", type="string", length=255)
-	 */
-	private $name;
+	private $username;
 	
 	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="login_utc", type="string", length=255)
+	 * @ORM\Column(name="is_registered", type="boolean")
 	 */
-	private $loginUtc;
-
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="course", type="string", length=255)
-	 */
-	private $course;
+	private $isRegistered;
 	
 	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="end_course_semester", type="string", length=255)
+	 * @ORM\Column(name="role", type="string", length=30)
 	 */
-	private $endCourseSemester;
+	private $role;
 
 	/**
-	 * @var string
-	 *
-	 * @ORM\Column(name="skills", type="text", nullable=true)
+	 * @ORM\Column(name="email", type="string", length=255, nullable=true)
+	 */
+	private $email = null;
+
+	/**
+	 * @ORM\Column(name="phone", type="string", length=255, nullable=true)
+	 */
+	private $phone = null;
+	
+	/**
+	 * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
+	 */
+	private $firstName = null;
+
+	/**
+	 * @ORM\Column(name="name", type="string", length=255, nullable=true)
+	 */
+	private $name = null;
+
+	/**
+	 * @ORM\Column(name="course", type="string", length=255, nullable=true)
+	 */
+	private $course = null;
+	
+	/**
+	 * @ORM\Column(name="end_course_semester", type="string", length=255, nullable=true)
+	 */
+	private $endCourseSemester = null;
+
+	/**
+	 * @ORM\Column(name="skills", type="text", nullable=true, nullable=true)
 	 */
 	private $skills = null;
 	
 	/**
-	 * @var string
-	 *
 	 * @ORM\Column(name="interested_in", type="text", nullable=true)
 	 */
 	private $interestedIn = null;
 	
 	/**
-	 * @var string
-	 *
 	 * @ORM\Column(name="motivation", type="text", nullable=true)
 	 */
 	private $motivation = null;
 
 	/**
-	 * @var boolean
-	 *
-	 * @ORM\Column(name="is_cv_uploaded", type="boolean")
+	 * @ORM\Column(name="is_cv_uploaded", type="boolean", nullable=true)
 	 */
 	private $isCvUploaded;
-	
-	/**
-	 * @var \DateTime
-	 *
-	 * @ORM\Column(name="unsuscribe_date", type="datetime", nullable=true)
-	 */
-	private $unsuscribeDate = null;
 
 	/**
-	 * @var \DateTime
-	 *
 	 * @ORM\Column(name="creation_date", type="datetime")
 	 */
 	private $creationDate;
@@ -118,8 +100,99 @@ class Student
 	 * @ORM\Column(name="change_date", type="datetime", nullable=true)
 	 */
 	private $changeDate = null;
+	
+	public function __construct()
+	{
+		/*
+		 * If a student has been connected to the platform by CAS,
+	 	 * that doesn't mean that he is registered. 
+		 */
+		$this->isRegistered = false;
+		// Currently, we manage and persist only one role.
+		$this->role = array(self::DEFAULT_ROLE);
+		$this->isCvUploaded = false;
+		$this->creationDate = new \DateTime();
+	}
+	
+	/**
+	 * @inheritDoc
+	 */
+	public function getUsername()
+	{
+		// .
+		return $this->username;
+	}
+	
+	public function setUsername($username)
+	{
+		$this->username = $username;
+	}
+	
+	/**
+	 * @inheritDoc
+	 */
+	public function getPassword()
+	{
+		// As we only use the UTC CAS for login, no password is needed.
+		return 'coincoin';
+	}
+	
+	/**
+	 * @inheritDoc
+	 */
+	public function getSalt()
+	{
+		// As there is no password needed, no salt is needed.
+		return '42';
+	}
+	
+	/**
+	 * @inheritDoc
+	 */
+	public function getRoles()
+	{
+		return array($this->role);
+	}
+	
+	public function setRoles($roles)
+	{
+		$this->role = empty($roles) ? self::DEFAULT_ROLE : $roles[0];
+	}
+	
+	/**
+	 * @inheritDoc
+	 */
+	public function eraseCredentials()
+	{
+	}
 
-
+	/**
+	 * @see \Serializable::serialize()
+	 */
+	public function serialize()
+	{
+		return serialize(array(
+				$this->id,
+				$this->username
+		));
+	}
+	
+	/**
+	 * @see \Serializable::unserialize()
+	 */
+	public function unserialize($serialized)
+	{
+		list (
+				$this->id,
+				$this->username
+		) = unserialize($serialized);
+	}
+	
+	public function isEqualTo(UserInterface $user)
+	{
+		return $this->username === $user->getUsername();
+	}
+	
     /**
      * Get id
      *
@@ -220,29 +293,6 @@ class Student
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set loginUtc
-     *
-     * @param string $loginUtc
-     * @return Student
-     */
-    public function setLoginUtc($loginUtc)
-    {
-        $this->loginUtc = $loginUtc;
-    
-        return $this;
-    }
-
-    /**
-     * Get loginUtc
-     *
-     * @return string 
-     */
-    public function getLoginUtc()
-    {
-        return $this->loginUtc;
     }
 
     /**
@@ -450,5 +500,51 @@ class Student
     public function getChangeDate()
     {
         return $this->changeDate;
+    }
+
+    /**
+     * Set isRegistered
+     *
+     * @param boolean $isRegistered
+     * @return Student
+     */
+    public function setIsRegistered($isRegistered)
+    {
+        $this->isRegistered = $isRegistered;
+    
+        return $this;
+    }
+
+    /**
+     * Get isRegistered
+     *
+     * @return boolean 
+     */
+    public function getIsRegistered()
+    {
+        return $this->isRegistered;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     * @return Student
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }

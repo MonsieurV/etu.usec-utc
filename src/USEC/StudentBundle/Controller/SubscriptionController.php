@@ -18,7 +18,6 @@ class SubscriptionController extends Controller
     public function processAction(Request $request) {
     	$student = new Student();
     	$student->setCreationDate(new \DateTime());
-    	$student->setIsCvUploaded(false);
     	$student->setName($request->request->get('name'));
     	$student->setFirstName($request->request->get('firstName'));
     	$student->setLoginUtc($request->request->get('loginUtc'));

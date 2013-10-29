@@ -1,43 +1,38 @@
-jms_security_extra:
-    secure_all_services: false
-    expressions: true
-
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
-
+        USEC\StudentBundle\Entity\Student: plaintext
+    
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN:       ROLE_UTC_CAS
+        ROLE_SUPER_ADMIN: [ROLE_UTC_CAS, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        administrators:
+            id: sso_user_provider
 
     firewalls:
+        # Firewall using the UTC CAS.
+        secured_area:
+            pattern: ^/
+            anonymous: ~
+            trusted_sso:
+                manager: utc_sso
+                # We don't need login nor logout action, as we uniquely use the CAS.
+                login_action: false
+                logout_action: false
+                # If the user login by the CAS doesn't already exist in our database, create an entry.
+                create_users: true
+                created_users_roles: [ ROLE_UTC_CAS ]
+                check_path: /
+
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+            
         login:
-            pattern:  ^/demo/secured/login$
+            pattern:  ^/login$
             security: false
-
-        secured_area:
-            pattern:    ^/demo/secured/
-            form_login:
-                check_path: /demo/secured/login_check
-                login_path: /demo/secured/login
-            logout:
-                path:   /demo/secured/logout
-                target: /demo/
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
-
+        
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        # The routes to protect by CAS.
+        - { path: ^/etudes, roles: ROLE_UTC_CAS }
