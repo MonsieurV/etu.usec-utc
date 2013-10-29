@@ -1,4 +1,7 @@
 parameters:
+    # Emails auxquels on transfère chaque notification d'inscription.
     forward_subscription_to: [yoan.tournade@gmail.com, rh@usec-utc.fr, contact@usec-utc.fr]
+    # De la part de qui l'email est envoyé.
     forward_subscription_from: dsi@usec-utc.fr
+    # De la part de qui l'email de confirmation d'inscription est envoyé à l'étudiant.
     notification_subscription_from: contact@usec-utc.fr
