@@ -63,7 +63,7 @@ class SubscriptionController extends Controller
     	$this->get('mailer')->send($message);
     }
     
-    public static function getNextSemestersAbrev($timestamp = NULL) {
+    protected static function getNextSemestersAbrev($timestamp = NULL) {
     	if($timestamp == NULL)
     		$timestamp = time();
     	// Generate next semesters abreviations (A12, P13, A13, etc.).
