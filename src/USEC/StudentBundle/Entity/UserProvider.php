@@ -74,6 +74,7 @@ class UserProvider implements UserProviderInterface, UserFactoryInterface
 		$student->setRoles($roles);
 		$this->em->persist($student);
 		$this->em->flush();
+		
 		return $student;
 	}
 }

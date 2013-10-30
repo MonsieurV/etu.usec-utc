@@ -1,17 +1,17 @@
 {% extends 'USECStudentBundle:Default:layout.html.twig' %}
 
 {% block navbar %}
-	<div class="navbar navbar-inverse navbar-fixed-top">
-  	<div class="navbar-inner">
-    	<div class="container">
-      	<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        	<span class="icon-bar"></span>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-      	<div class="nav-collapse collapse">
-      		<ul class="nav">
-          	<li class="active"><a href="#main-container">Accueil</a></li>
+        <div class="nav-collapse collapse">
+            <ul class="nav">
+            <li class="active"><a href="#main-container">Accueil</a></li>
             <li><a href="#video">L'USEC en bref</a></li>
             <li><a href="#etudes-showcase">Les études</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -19,264 +19,218 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 {% endblock %}
 
 {% block content %}
-	<div class="row-fluid jumbotron">
-        </div>
-        <!-- Jumbotron -->
-        <div class="row-fluid jumbotron">
-        	<div class="span9">
-        		<h1>UTCéens, UTCéennes, devenez consultants pendant vos études !</h1>
-         		<p>L'USEC vous permet de réaliser des études rémunérées pour les entreprises.</p>
-        	</div>
-          	<div class="span3">
-          		<img class="img-rounded" id="img-jombotron" src="{{ asset('bundles/usecstudent/images/sceau_etudiant_r9d.png') }}" />
-          	</div>
-        </div>
+<!-- Jumbotron -->
+<div class="row-fluid jumbotron">
+    <div class="span9">
+        <h1>UTCéens, UTCéennes, devenez consultants pendant vos études !</h1>
+        <p>L'USEC vous permet de réaliser des études rémunérées pour les entreprises.</p>
+    </div>
+    <div class="span3">
+        <img class="img-rounded" id="img-jombotron" src="{{ asset('bundles/usecstudent/images/sceau_etudiant_r9d.png') }}" />
+    </div>
+</div>
 
-        <hr>
+<hr>
 
-        <div class="row-fluid anchor-target" id="video">
-          <div class="span10 offset1">
-            <iframe width="853" height="480" src="http://www.youtube.com/embed/Ml3rW-GYhX8" frameborder="0" allowfullscreen></iframe> <p></p>
+<div class="row-fluid anchor-target" id="video">
+  <div class="span10 offset1">
+    <iframe width="853" height="480" src="http://www.youtube.com/embed/Ml3rW-GYhX8" frameborder="0" allowfullscreen></iframe> <p></p>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<!-- Jumbotron -->
+<div class="jumbotron" id="subscription">
+  <h1>Où est-ce qu'on signe ?</h1>
+  <p class="lead">Vous pouvez vous inscrire sur notre liste de consultants potentiels : cela nous permettra de vous contacter dès que nous aurons une étude à vous proposer !</p>
+  <a class="btn btn-large btn-primary" href="{{ path('subscription_form') }}">Inscrivez-vous en cliquant ici</a>
+</div>
+
+<div class="row-fluid anchor-target" id="video">
+  <div class="span6 offset4">
+  <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fetu.usec-utc.fr%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px; z-index:1000;" allowTransparency="true"></iframe>
+  </div>
+</div>
+
+<hr>
+
+<div class="row-fluid anchor-target" id="brief-usec">
+  <div class="span10 offset1">
+    <h2>L'USEC en bref.</h2>
+    <p>L'USEC (Université Service Etudes Conseil) est une <a target="_blank" href="http://fr.wikipedia.org/wiki/Junior-Entreprise">Junior-Entreprise</a>. Ce cabinet de conseil étudiant permet à n'importe quel élève-ingénieur de l'UTC de mettre ses compétence au service des entreprises, en acquérant ainsi une expérience valorisable au sein de son cursus. L'USEC est une équipe de 40 étudiants formés pour traiter toutes les problématiques de l'entreprise : développement commercial, qualité, gestion de projets, communication, finance, RH, etc. Si vous avez envie de vivre une belle expérience humaine et entrepreneuriale, si vous aimez les défis, cette association est faite pour vous !</p>
+    <p>L'association est affiliée à la Confédération Nationale des Junior-Entreprises (<a target="_blank" href="http://fr.wikipedia.org/wiki/Conf%C3%A9d%C3%A9ration_nationale_des_Junior-Entreprises">CNJE</a>). Ce réseaux compte 17000 junior-entrepreneurs.</p>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="featurette">
+  <img class="featurette-image pull-left" src="{{ asset('bundles/usecstudent/images/sceau_etudiant.png') }}" height="512px" width="512px">
+  <h2 class="featurette-heading">Apprendre, <span class="muted">toujours.</span></h2>
+  <p>L'un des objectifs d'une Junior-Entreprise est d'apprendre : l'USEC en a fait sa devise ! En travaillant sur des études, vous apprendez non seulement à appliquer les connaissances vues en cours, mais également à découvrir de nouvelles technologies et à développer vos compétences en gestion de projet.</p>
+  <p>En rejoingnant l'équipe, vous aurez des formations dispensées par vos prédécesseurs et des professionnels sur toutes les problématiques de l'entreprise.</p>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row-fluid" id="how-it-works">
+  <div class="span7 offset1">
+    <h2>Comment se déroule une étude ?</h2>
+    <p>Une étude comporte quatre phases :</p>
+    <ol>
+        <li>Premier contact avec le client, via la prospection ou les contacts spontanés ;</li>
+        <li>Identification du besoin, mise en place des contrats et recherche de consultants ;</li>
+        <li>Réalisation de l'étude. Le chef de projet s'assure du respect des délais et du suivi des travaux ;</li>
+        <li>Livraison de l'étude. Règlement du client, puis reversement des parts aux réalisateurs.</li>
+    </ol>
+  </div>
+  <div class="span2 offset1">
+      <img class="img-rounded" src="{{ asset('bundles/usecstudent/images/usec_pour_les_nuls.png') }}" />
+  </div>
+</div>
+
+<hr>
+
+<div class="row-fluid anchor-target" id="etudes-showcase">
+  <div class="span8 offset2">
+    <h2>Quelques exemples d'études.</h2>
+    <div id="exemples-etudes" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#exemples-etudes" data-slide-to="0" class="active"></li>
+        <li data-target="#exemples-etudes" data-slide-to="1"></li>
+        <li data-target="#exemples-etudes" data-slide-to="2"></li>
+        <li data-target="#exemples-etudes" data-slide-to="3"></li>
+        <li data-target="#exemples-etudes" data-slide-to="4"></li>
+        <li data-target="#exemples-etudes" data-slide-to="5"></li>
+        <li data-target="#exemples-etudes" data-slide-to="6"></li>
+        <li data-target="#exemples-etudes" data-slide-to="7"></li>
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+       
+        <div class="active item">
+          <img src="{{ asset('bundles/usecstudent/images/etudes/traduction.png') }}" />
+          <div class="carousel-caption">
+            <h4>Pôle sciences humaines et technologies - Traduction de documents techniques</h4>
+            <p>Traduction de 7 documents techniques de l'anglais et français vers l'espagnol.</p>
+            <p>Compétences : Anglais, Français, Espagnol.</p>
+            <p>Rémunération : 850 € (1 consultant).</p>
           </div>
         </div>
-
-        <hr class="featurette-divider">
-        
-        {% include 'USECStudentBundle:Subscription:sign.html.twig' %}
-
-
-        <div class="row-fluid anchor-target" id="video">
-          <div class="span6 offset4">
-          <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fetu.usec-utc.fr%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px; z-index:1000;" allowTransparency="true"></iframe>
+        <div class="item">
+          <img src="{{ asset('bundles/usecstudent/images/etudes/machine.png') }}" />
+          <div class="carousel-caption">
+            <h4>Pôle qualité - Réalisation d'une AMDEC machine</h4>
+            <p>Suite à un AMDEC Processus, notre client souhaite poursuivre sa collaboration avec l'USEC en réalisant un AMDEC sur plusieurs de ses machines afin de fiabiliser ses lignes de production.</p>
+            <p>Compétences : Analyse fonctionnelle, AMDEC, ISO-9001, suivi de plans d'actions.</p>
+            <p>Rémunération : 6 800 € (1 consultant).</p>
           </div>
         </div>
-        
-        <hr>
-        
-        <div class="row-fluid anchor-target" id="brief-usec">
-          <div class="span10 offset1">
-            <h2>L'USEC en bref.</h2>
-            <p>L'USEC (Université Service Etudes Conseil) est une <a target="_blank" href="http://fr.wikipedia.org/wiki/Junior-Entreprise">Junior-Entreprise</a>. Ce cabinet de conseil étudiant permet à n'importe quel élève-ingénieur de l'UTC de mettre ses compétence au service des entreprises, en acquérant ainsi une expérience valorisable au sein de son cursus. L'USEC est une équipe de 40 étudiants formés pour traiter toutes les problématiques de l'entreprise : développement commercial, qualité, gestion de projets, communication, finance, RH, etc. Si vous avez envie de vivre une belle expérience humaine et entrepreneuriale, si vous aimez les défis, cette association est faite pour vous !</p>
-            <p>L'association est affiliée à la Confédération Nationale des Junior-Entreprises (<a target="_blank" href="http://fr.wikipedia.org/wiki/Conf%C3%A9d%C3%A9ration_nationale_des_Junior-Entreprises">CNJE</a>). Ce réseaux compte 17000 junior-entrepreneurs.</p>
+        <div class="item">
+          <img src="{{ asset('bundles/usecstudent/images/etudes/value_stream_mapping.png') }}" />
+          <div class="carousel-caption">
+            <h4>Pôle mécanique - Projet de déménagement d'usine</h4>
+            <p>Définition d'une configuration de masse pour évaluer le coût et la faisabilité d'un projet de déménagement d'usine.</p>
+            <p>Compétences : modélisation et optimisation de processus, chiffrage d'installations industrielles.</p>
+            <p>Rémunération : 1 750 € (2 consultants).</p>
           </div>
         </div>
-
-        <hr class="featurette-divider">
-
-        <div class="featurette">
-          <img class="featurette-image pull-left" src="{{ asset('bundles/usecstudent/images/sceau_etudiant.png') }}" height="512px" width="512px">
-          <h2 class="featurette-heading">Apprendre, <span class="muted">toujours.</span></h2>
-          <p>L'un des objectifs d'une Junior-Entreprise est d'apprendre : l'USEC en a fait sa devise ! En travaillant sur des études, vous apprendez non seulement à appliquer les connaissances vues en cours, mais également à découvrir de nouvelles technologies et à développer vos compétences en gestion de projet.</p>
-          <p>En rejoingnant l'équipe, vous aurez des formations dispensées par vos prédécesseurs et des professionnels sur toutes les problématiques de l'entreprise.</p>
-        </div>
-
-        <hr class="featurette-divider">
-        
-        <div class="row-fluid" id="how-it-works">
-          <div class="span7 offset1">
-            <h2>Comment se déroule une étude ?</h2>
-            <p>Une étude comporte quatre phases :</p>
-            <ol>
-            	<li>Premier contact avec le client, via la prospection ou les contacts spontanés ;</li>
-            	<li>Identification du besoin, mise en place des contrats et recherche de consultants ;</li>
-            	<li>Réalisation de l'étude. Le chef de projet s'assure du respect des délais et du suivi des travaux ;</li>
-            	<li>Livraison de l'étude. Règlement du client, puis reversement des parts aux réalisateurs.</li>
-            </ol>
-          </div>
-          <div class="span2 offset1">
-              <img class="img-rounded" src="{{ asset('bundles/usecstudent/images/usec_pour_les_nuls.png') }}" />
+        <div class="item">
+          <img src="{{ asset('bundles/usecstudent/images/etudes/securite_alimentaire.png') }}" />
+          <div class="carousel-caption">
+            <h4>Pôle biologique - Rédaction d'un manuel technique</h4>
+            <p>Rédaction d'un manuel HACCP en vue d'un certification GMP ou équivalent.</p>
+            <p>Compétences : TODO.</p>
+            <p>Rémunération : 800 € (1 consultant).</p>
           </div>
         </div>
-
-        <hr>
-
-        <div class="row-fluid anchor-target" id="etudes-showcase">
-          <div class="span8 offset2">
-            <h2>Quelques exemples d'études.</h2>
-            <div id="exemples-etudes" class="carousel slide">
-              <ol class="carousel-indicators">
-                <li data-target="#exemples-etudes" data-slide-to="0" class="active"></li>
-                <li data-target="#exemples-etudes" data-slide-to="1"></li>
-                <li data-target="#exemples-etudes" data-slide-to="2"></li>
-                <li data-target="#exemples-etudes" data-slide-to="3"></li>
-                <li data-target="#exemples-etudes" data-slide-to="4"></li>
-                <li data-target="#exemples-etudes" data-slide-to="5"></li>
-                <li data-target="#exemples-etudes" data-slide-to="6"></li>
-                <li data-target="#exemples-etudes" data-slide-to="7"></li>
-              </ol>
-              <!-- Carousel items -->
-              <div class="carousel-inner">
-               
-                <div class="active item">
-                  <img src="{{ asset('bundles/usecstudent/images/etudes/traduction.png') }}" />
-                  <div class="carousel-caption">
-                    <h4>Pôle sciences humaines et technologies - Traduction de documents techniques</h4>
-                    <p>Traduction de 7 documents techniques de l'anglais et français vers l'espagnol.</p>
-                    <p>Compétences : Anglais, Français, Espagnol.</p>
-                    <p>Rémunération : 850 € (1 consultant).</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="{{ asset('bundles/usecstudent/images/etudes/machine.png') }}" />
-                  <div class="carousel-caption">
-                    <h4>Pôle qualité - Réalisation d'une AMDEC machine</h4>
-                    <p>Suite à un AMDEC Processus, notre client souhaite poursuivre sa collaboration avec l'USEC en réalisant un AMDEC sur plusieurs de ses machines afin de fiabiliser ses lignes de production.</p>
-                    <p>Compétences : Analyse fonctionnelle, AMDEC, ISO-9001, suivi de plans d'actions.</p>
-                    <p>Rémunération : 6 800 € (1 consultant).</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="{{ asset('bundles/usecstudent/images/etudes/value_stream_mapping.png') }}" />
-                  <div class="carousel-caption">
-                    <h4>Pôle mécanique - Projet de déménagement d'usine</h4>
-                    <p>Définition d'une configuration de masse pour évaluer le coût et la faisabilité d'un projet de déménagement d'usine.</p>
-                    <p>Compétences : modélisation et optimisation de processus, chiffrage d'installations industrielles.</p>
-                    <p>Rémunération : 1 750 € (2 consultants).</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="{{ asset('bundles/usecstudent/images/etudes/securite_alimentaire.png') }}" />
-                  <div class="carousel-caption">
-                    <h4>Pôle biologique - Rédaction d'un manuel technique</h4>
-                    <p>Rédaction d'un manuel HACCP en vue d'un certification GMP ou équivalent.</p>
-                    <p>Compétences : TODO.</p>
-                    <p>Rémunération : 800 € (1 consultant).</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="{{ asset('bundles/usecstudent/images/etudes/maison_petite_enfance.png') }}" />
-                  <div class="carousel-caption">
-                    <h4>Pôle GSU - Rédaction d'études préalables</h4>
-                    <p>Réalisation d'un ensemble d'études préalables à la création d'un service de la petite enfance, impliquant la construction d'une maison de la petite enfance et éventuellement de deux équipement satellites.</p>
-                    <p>Compétences : TODO.</p>
-                    <p>Rémunération : 6 250 € (3 consultants).</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="{{ asset('bundles/usecstudent/images/etudes/jantes.png') }}" />
-                  <div class="carousel-caption">
-                    <h4>Pôle mobile - Développement d'une application iPhone</h4>
-                    <p>Développement d'une application mobile iPhone permettant de parcourir et visualiser en réalité augmentée le catalogue produit d'un fabriquant de jante pour le domaine automobile.</p>
-                    <p>Compétences : Obj-C, Cocoa, Web-service.</p>
-                    <p>Rémunération : 1 500 € (3 consultants).</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="{{ asset('bundles/usecstudent/images/etudes/centrale_cycle_combine.png') }}" />
-                  <div class="carousel-caption">
-                    <h4>Pôle procédés - Etude environnementale</h4>
-                    <p>Etude environnementale d'une future centrale à gaz à cycle combinée.</p>
-                    <p>Compétences : TODO.</p>
-                    <p>Rémunération : 780 € (1 consultant).</p>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="{{ asset('bundles/usecstudent/images/etudes/cartes_puces.png') }}" />
-                  <div class="carousel-caption">
-                    <h4>Pôle informatique - Développement d'une application web</h4>
-                    <p>Conception et développement d'une application web permettant de créer et d'éditer intuitivement le visuel de cartes plastiques et de cartes à puce.</p>
-                    <p>Compétences : PHP, HTML, CSS, Js, jQuery, MySQL.</p>
-                    <p>Rémunération : 1 900 € (3 consultants).</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Carousel nav -->
-              <a class="carousel-control left" href="#exemples-etudes" data-slide="prev">&lsaquo;</a>
-              <a class="carousel-control right" href="#exemples-etudes" data-slide="next">&rsaquo;</a>
-            </div>
+        <div class="item">
+          <img src="{{ asset('bundles/usecstudent/images/etudes/maison_petite_enfance.png') }}" />
+          <div class="carousel-caption">
+            <h4>Pôle GSU - Rédaction d'études préalables</h4>
+            <p>Réalisation d'un ensemble d'études préalables à la création d'un service de la petite enfance, impliquant la construction d'une maison de la petite enfance et éventuellement de deux équipement satellites.</p>
+            <p>Compétences : TODO.</p>
+            <p>Rémunération : 6 250 € (3 consultants).</p>
           </div>
         </div>
-        
-        <div class="row-fluid" id="available-studies">
-        	<div class="span6 offset4">
-            <p><a class="btn btn-large btn-primary" href="{{ path('studies_available') }}">Consulter les études actuellement disponibles</a></p>
+        <div class="item">
+          <img src="{{ asset('bundles/usecstudent/images/etudes/jantes.png') }}" />
+          <div class="carousel-caption">
+            <h4>Pôle mobile - Développement d'une application iPhone</h4>
+            <p>Développement d'une application mobile iPhone permettant de parcourir et visualiser en réalité augmentée le catalogue produit d'un fabriquant de jante pour le domaine automobile.</p>
+            <p>Compétences : Obj-C, Cocoa, Web-service.</p>
+            <p>Rémunération : 1 500 € (3 consultants).</p>
           </div>
         </div>
-        
-        <hr class="featurette-divider">
-
-        <div class="featurette">
-          <img class="featurette-image pull-right" src="{{ asset('bundles/usecstudent/images/nuage_references.png') }}" height="512px" width="512px">
-          <h2 class="featurette-heading">Ils nous ont fait confiance, <span class="muted"> ils vous feront confiance !</span></h2>
-          <p class="lead">Une étude est en outre un bon argument pour votre CV. Parmi les 1400 études qui ont été réalisées depuis 30 ans, on trouve parmi nos clients des PME locales, mais aussi de nombreux grands groupes de renommée mondiale.</p>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row-fluid" id="money">
-          <div class="span3">
-              <img class="img-rounded" src="{{ asset('bundles/usecstudent/images/salaire.png') }}" />
-          </div>
-          <div class="span8 offset1">
-            <h2>Let's talk money</h2>
-            <p>Que vous ayez besoin d'argent pour financer vos études, vous payer des vacances, renflouer votre compte payutc ou encore faire une collection de sous-tasses, l'USEC peut vous permettre d'atteindre votre objectif, tout en réalisant des travaux présentant une plus-value intellectuelle ! Fini l'été au Mc Do...</p>
-            <p> Les rémunérations sont comprises entre plusieurs centaines d'euros pour une étude occupant quelques semaines, à quelques milliers d'euros pour une étude se prolongeant durant plusieurs mois.</p>
-            <p>En moyenne, la durée des études est de 12 jours (très variable). Comptez environ 120 € net par jour de travail. Cependant attention, un client mécontent ne paye pas !</p>
+        <div class="item">
+          <img src="{{ asset('bundles/usecstudent/images/etudes/centrale_cycle_combine.png') }}" />
+          <div class="carousel-caption">
+            <h4>Pôle procédés - Etude environnementale</h4>
+            <p>Etude environnementale d'une future centrale à gaz à cycle combinée.</p>
+            <p>Compétences : TODO.</p>
+            <p>Rémunération : 780 € (1 consultant).</p>
           </div>
         </div>
-<!--
-        <hr class="featurette-divider">
-
-        <div class="featurette anchor-target" id="try-harder">
-          <img class="featurette-image pull-right" src="{{ asset('bundles/usecstudent/images/go_logo.png') }}" height="512px" width="512px">
-          <h2 class="featurette-heading">Pour réussir, <span class="muted">il faut essayer.</span></h2>
-          <p class="lead">Se confronter à un cas pratique, c'est devenir conscient de ses capacités.</p>
-        </div>
--->
-        <hr>
-
-        <div class="row-fluid anchor-target" id="contact">
-          <div class="span4">
-            <h2>En savoir plus</h2>
-            <p>Si vous n'êtes toujours pas convaincus, que vous souhaitez en savoir plus sur l'USEC ou que vous avez un projet à nous soumettre, vous pouvez nous contacter par email. Vous pouvez également venir nous rendre visite au local de l'association (FC222, en face du BDE).</p>
-            <p><a class="btn" href="mailto:contact@usec-utc.fr?subject=Renseignements sur le fonctionnement de l'USEC">Contactez-nous</a></p>
-          </div>
-          <div class="span7 offset1">
-              <img class="img-rounded" src="{{ asset('bundles/usecstudent/images/usec_normal2.png') }}" />
+        <div class="item">
+          <img src="{{ asset('bundles/usecstudent/images/etudes/cartes_puces.png') }}" />
+          <div class="carousel-caption">
+            <h4>Pôle informatique - Développement d'une application web</h4>
+            <p>Conception et développement d'une application web permettant de créer et d'éditer intuitivement le visuel de cartes plastiques et de cartes à puce.</p>
+            <p>Compétences : PHP, HTML, CSS, Js, jQuery, MySQL.</p>
+            <p>Rémunération : 1 900 € (3 consultants).</p>
           </div>
         </div>
-{% endblock %}
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#exemples-etudes" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#exemples-etudes" data-slide="next">&rsaquo;</a>
+    </div>
+  </div>
+</div>
 
-{% block javascripts %}
-	{{ parent() }}
-	<script>
-	function submitFormFailed() {
-		if(typeof document.body != 'undefined')
-			jQuery(document.body).animate({scrollTop: $('#form-alert-container').offset().top}, 1000);
-		jQuery('#form-alert-container').html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Erreur à la soumission.</strong> Vérifiez que le formulaire est correctement renseigné.</div>');
-		jQuery(".alert").alert();
-	}
-	function submitFormSuccessed() {
-		jQuery('#form-alert-container').html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Inscription compète !</strong> Nous vous recontacterons très prochainement, à bientôt !</div>');
-		jQuery(".alert").alert();
-		jQuery('#form-submit-group').html('<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Fermer</button>');
-	}
-	jQuery(document).ready(function() {
-		jQuery("#subscriptionForm").submit(function(event) {
-			event.preventDefault();
-			/* Verify the form : done by HTML 5 browsers. */
-			/* Post the form */
-			jQuery('#subscription-btn-submit').button('loading');
-			console.log(jQuery(this).serialize());
-			var posting = jQuery.post("{{ path('subscription_process') }}", jQuery(this).serialize(), null, 'json');
-			posting.done(function(data) {
-				if(typeof data.status != 'undefined' && data.status)
-					submitFormSuccessed();
-				else
-					submitFormFailed();
-			});
-			posting.fail(function(data) {
-				submitFormFailed();
-			});
-			posting.always(function() {
-				jQuery('#subscription-btn-submit').button('reset');
-			});
-		});
-	});
-	</script>
-{% endblock %}
- 
+<div class="row-fluid" id="available-studies">
+    <div class="span6 offset4">
+    <p><a class="btn btn-large btn-primary" href="{{ path('studies_available') }}">Consulter les études actuellement disponibles</a></p>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="featurette">
+  <img class="featurette-image pull-right" src="{{ asset('bundles/usecstudent/images/nuage_references.png') }}" height="512px" width="512px">
+  <h2 class="featurette-heading">Ils nous ont fait confiance, <span class="muted"> ils vous feront confiance !</span></h2>
+  <p class="lead">Une étude est en outre un bon argument pour votre CV. Parmi les 1400 études qui ont été réalisées depuis 30 ans, on trouve parmi nos clients des PME locales, mais aussi de nombreux grands groupes de renommée mondiale.</p>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row-fluid" id="money">
+  <div class="span3">
+      <img class="img-rounded" src="{{ asset('bundles/usecstudent/images/salaire.png') }}" />
+  </div>
+  <div class="span8 offset1">
+    <h2>Let's talk money</h2>
+    <p>Que vous ayez besoin d'argent pour financer vos études, vous payer des vacances, renflouer votre compte payutc ou encore faire une collection de sous-tasses, l'USEC peut vous permettre d'atteindre votre objectif, tout en réalisant des travaux présentant une plus-value intellectuelle ! Fini l'été au Mc Do...</p>
+    <p> Les rémunérations sont comprises entre plusieurs centaines d'euros pour une étude occupant quelques semaines, à quelques milliers d'euros pour une étude se prolongeant durant plusieurs mois.</p>
+    <p>En moyenne, la durée des études est de 12 jours (très variable). Comptez environ 120 € net par jour de travail. Cependant attention, un client mécontent ne paye pas !</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row-fluid anchor-target" id="contact">
+  <div class="span4">
+    <h2>En savoir plus</h2>
+    <p>Si vous n'êtes toujours pas convaincus, que vous souhaitez en savoir plus sur l'USEC ou que vous avez un projet à nous soumettre, vous pouvez nous contacter par email. Vous pouvez également venir nous rendre visite au local de l'association (FC222, en face du BDE).</p>
+    <p><a class="btn" href="mailto:contact@usec-utc.fr?subject=Renseignements sur le fonctionnement de l'USEC">Contactez-nous</a></p>
+  </div>
+  <div class="span7 offset1">
+      <img class="img-rounded" src="{{ asset('bundles/usecstudent/images/usec_normal2.png') }}" />
+  </div>
+</div>
+{% endblock %} 

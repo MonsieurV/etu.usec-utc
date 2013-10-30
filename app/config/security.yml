@@ -36,3 +36,4 @@ security:
     access_control:
         # The routes to protect by CAS.
         - { path: ^/etudes, roles: ROLE_UTC_CAS }
+        - { path: ^/sign, roles: ROLE_UTC_CAS }

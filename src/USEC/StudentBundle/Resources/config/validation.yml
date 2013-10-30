@@ -8,7 +8,7 @@ USEC\StudentBundle\Entity\Student:
       - NotBlank: ~
     firstName:
       - NotBlank: ~
-    loginUtc:
+    username:
       - NotBlank: ~
     course:
       - NotBlank: ~

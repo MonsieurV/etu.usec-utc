@@ -444,29 +444,6 @@ class Student implements UserInterface, \Serializable, EquatableInterface
     }
 
     /**
-     * Set unsuscribeDate
-     *
-     * @param \DateTime $unsuscribeDate
-     * @return Student
-     */
-    public function setUnsuscribeDate($unsuscribeDate)
-    {
-        $this->unsuscribeDate = $unsuscribeDate;
-    
-        return $this;
-    }
-
-    /**
-     * Get unsuscribeDate
-     *
-     * @return \DateTime 
-     */
-    public function getUnsuscribeDate()
-    {
-        return $this->unsuscribeDate;
-    }
-
-    /**
      * Set creationDate
      *
      * @param \DateTime $creationDate
@@ -530,7 +507,7 @@ class Student implements UserInterface, \Serializable, EquatableInterface
      *
      * @return boolean 
      */
-    public function getIsRegistered()
+    public function isRegistered()
     {
         return $this->isRegistered;
     }

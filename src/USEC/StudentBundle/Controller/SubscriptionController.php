@@ -18,18 +18,21 @@ use USEC\StudentBundle\Entity\Student;
 
 class SubscriptionController extends Controller
 {
+	private static $LIST_COURSES = array('TC', 'GB', 'GP', 'GI', 'GM', 'GSU', 'ESCOM', 'Autre');
+	
     public function formAction() {
-    	return $this->render('USECStudentBundle:Subscription:new.html.twig', array(
+    	return $this->render('USECStudentBundle:Subscription:sign.html.twig', array(
     			'nextSemesters' => self::getNextSemestersAbrev(),
+    			'listCourses' => self::$LIST_COURSES,
+    			'user' => $this->get('security.context')->getToken()->getUser(),
     	));
     }
     
     public function processAction(Request $request) {
-    	$student = new Student();
-    	$student->setCreationDate(new \DateTime());
+    	$student = $this->get('security.context')->getToken()->getUser();
+    	$student->setChangeDate(new \DateTime());
     	$student->setName($request->request->get('name'));
     	$student->setFirstName($request->request->get('firstName'));
-    	$student->setLoginUtc($request->request->get('loginUtc'));
     	$student->setEmail($request->request->get('email'));
     	$student->setPhone($request->request->get('phone'));
     	$student->setCourse($request->request->get('course'));
@@ -37,23 +40,26 @@ class SubscriptionController extends Controller
     	$student->setMotivation($request->request->get('motivation'));
     	$student->setInterestedIn($request->request->get('interestedIn'));
     	$student->setSkills($request->request->get('skills'));
+    	if(($isNew = $student->isRegistered()) != true)
+    		$student->setIsRegistered(true);
     	
     	$validator = $this->get('validator');
     	$errors = $validator->validate($student);
     	
     	if(count($errors) > 0) {
-    		return new Response(print_r($errors, true));
-    		return new Response(json_encode(array('status' => false, 'errors' => print_r($errors, true))), 200, array('Content-Type', 'application/json'));
+    		return $this->redirect($this->generateUrl('subscription_form', array('postStatus' => false)));
     	}
     	else {
 	    	$em = $this->getDoctrine()->getManager();
 	    	$em->persist($student);
 	    	$em->flush();
-	    	$this->onSubscription($student);
-	    	return new Response(json_encode(array('status' => true)), 200, array('Content-Type', 'application/json'));
+	    	if($isNew)
+	    		$this->onSubscription($student);
+	    	return $this->redirect($this->generateUrl('subscription_form', array('postStatus' => true)));
     	}
     }
     
+    // TODO Create a real Synfony event and deplace the event handler in a service class.
     protected function onSubscription(Student $student) {
     	// Send a notification to the suscriber.
     	$message = \Swift_Message::newInstance()
@@ -71,7 +77,7 @@ class SubscriptionController extends Controller
     	$this->get('mailer')->send($message);
     }
     
-    protected static function getNextSemestersAbrev($timestamp = NULL) {
+    public static function getNextSemestersAbrev($timestamp = NULL) {
     	if($timestamp == NULL)
     		$timestamp = time();
     	// Generate next semesters abreviations (A12, P13, A13, etc.).

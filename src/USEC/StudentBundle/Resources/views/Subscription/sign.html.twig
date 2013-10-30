@@ -1,15 +1,86 @@
-<!-- Jumbotron -->
-<div class="jumbotron" id="subscription">
-  <h1>Où est-ce qu'on signe ?</h1>
-  <p class="lead">Vous pouvez vous inscrire sur notre liste de consultants potentiels : cela nous permettra de vous contacter dès que nous aurons une étude à vous proposer !</p>
-  <a class="btn btn-large btn-primary" href="#subscription-modal" data-toggle="modal">Inscrivez-vous en cliquant ici</a>
-</div>
+{% extends 'USECStudentBundle:Default:layout.html.twig' %}
 
-<!-- Modal -->
-<div id="subscription-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Inscription sur la liste des consultants</h3>
-  </div>
-  {{ render(controller('USECStudentBundle:Subscription:form')) }}
+{% block content %}
+<div class="row-fluid">
+	<div class="span6 offset3">
+		<form action="{{ path('subscription_process') }}" method="post" id="subscriptionForm" class="form-horizontal">
+		    <h4>Informations de contact :</h4>
+		    <div class="control-group">
+		        <label class="control-label" for="form-first-name">Prénom :</label>
+		        <div class="controls">
+		            <input type="text" name="firstName" id="form-first-name" required value="{{ user.firstName }}">
+		        </div>
+		    </div>
+		    <div class="control-group">
+		        <label class="control-label" for="form-name">Nom :</label>
+		        <div class="controls">
+		            <input type="text" name="name" id="form-name" required value="{{ user.name }}">
+		        </div>
+		    </div>
+		    <div class="control-group">
+		        <label class="control-label" for="form-login-utc">Login UTC :</label>
+		        <div class="controls">
+		            <input type="text" name="loginUtc" id="form-login-utc" required disabled value="{{ user.username }}" >
+		        </div>
+		    </div>
+		    <div class="control-group">
+		        <label class="control-label" for="form-email">Email :</label>
+		        <div class="controls">
+		            <input type="email" name="email" id="form-email" required value="{{ user.email }}">
+		        </div>
+		    </div>
+		    <div class="control-group">
+		        <label class="control-label" for="form-phone">Téléphone mobile :</label>
+		        <div class="controls">
+		            <input type="text" name="phone" id="form-phone" required value="{{ user.phone }}">
+		        </div>
+		    </div>
+		    <h4>Profil :</h4>
+		    <div class="control-group">
+		        <label class="control-label" for="form-course">Cursus suivi :</label>
+		        <div class="controls">
+		            <select name="course" id="form-course">
+		              {% for course in listCourses %}
+		                <option value="{{ course }}" {% if user.course == course %}selected{% endif %}>{{ course }}</option>
+		              {% endfor %}
+		            </select>
+		          </div>
+		        </div>
+		        <div class="control-group">
+		        <label class="control-label" for="form-semester-oututc">Semestre de sortie de l'UTC :</label>
+		        <div class="controls">
+		            <select name="endCourseSemester" id="form-semester-oututc">
+		              {% for nextSemester in nextSemesters %}
+		                <option value="{{ nextSemester }}" {% if user.endCourseSemester == nextSemester %}selected{% endif %}>{{ nextSemester }}</option>
+		              {% endfor %}
+		            </select>
+		        </div>
+		        </div>
+		    <h4>Motivations :</h4>
+		    <div class="control-group">
+		        <label class="control-label" for="form-motivation">Qu'est-ce qui vous motive à devenir consultant à l'USEC ?</label>
+		        <div class="controls">
+		            <textarea name="motivation" id="form-motivation" rows="3" cols="50" required>{{ user.motivation }}</textarea>
+		        </div>
+		    </div>
+		    <div class="control-group">
+		        <label class="control-label" for="form-interested-in">Sur quels types d'étude souhaitez-vous travailler de préférence ?</label>
+		        <div class="controls">
+		            <textarea name="interestedIn" id="form-interested-in" rows="3" cols="50">{{ user.interestedIn }}</textarea>
+		        </div>
+		    </div>
+		    <div class="control-group">
+		        <label class="control-label" for="form-skills">Quelles sont vos compétences mobilisables pour une étude ?</label>
+		        <div class="controls">
+		            <textarea name="skills" id="form-skills" rows="3" cols="50">{{ user.skills }}</textarea>
+		        </div>
+		    </div>
+		    <div class="form-actions">
+				<input  type="submit" class="btn btn-primary" id="subscription-btn-submit" data-loading-text="Enregistrement..."
+					value={% if not user.registered %}"Valider l'inscription"{% else %}"Modifier mes informations"{% endif %} />
+				<a class="btn" href="{{ path('homepage') }}">Retour</a>
+			</div>
+		</form>
+	</div>
 </div>
+{% endblock %}
