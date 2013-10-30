@@ -46,15 +46,14 @@ class UserProvider implements UserProviderInterface, UserFactoryInterface
 	{
 		$class = get_class($user);
 		if (!$this->supportsClass($class)) {
-			throw new UnsupportedUserException(
-					sprintf(
-							'Instances of "%s" are not supported.',
-							$class
-					)
-			);
+			throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $class));
+		}
+		$user =$this->em->getRepository('USECStudentBundle:Student')->findOneById($user->getId());
+		if(empty($user)){
+			throw new UsernameNotFoundException(sprintf('Impossible de trouver l\'utilisateur d\'identifiant "%s".', $user->getId()));
 		}
 	
-		return $this->em->getRepository('USECStudentBundle:Student')->findOneById($user->getId());
+		return $user;
 	}
 	
 	public function supportsClass($class)
