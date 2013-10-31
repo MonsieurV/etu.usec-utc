@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
  * Student
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="USEC\StudentBundle\Entity\StudentRepository")
+ * @ORM\Entity()
  */
 class Student implements UserInterface, \Serializable, EquatableInterface
 {
