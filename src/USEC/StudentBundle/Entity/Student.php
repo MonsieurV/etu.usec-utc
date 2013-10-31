@@ -21,7 +21,7 @@ use Symfony\Component\Security\Core\User\EquatableInterface;
  * @ORM\Table()
  * @ORM\Entity()
  */
-class Student implements UserInterface, \Serializable, EquatableInterface
+class Student implements UserInterface, EquatableInterface
 {
 	const DEFAULT_ROLE = 'ROLE_UTC_CAS';
 	
@@ -105,8 +105,6 @@ class Student implements UserInterface, \Serializable, EquatableInterface
 	private $creationDate;
 
 	/**
-	 * @var \DateTime
-	 *
 	 * @ORM\Column(name="change_date", type="datetime", nullable=true)
 	 */
 	private $changeDate = null;
@@ -136,6 +134,8 @@ class Student implements UserInterface, \Serializable, EquatableInterface
 	public function setUsername($username)
 	{
 		$this->username = $username;
+		
+		return $this;
 	}
 	
 	/**
@@ -144,7 +144,7 @@ class Student implements UserInterface, \Serializable, EquatableInterface
 	public function getPassword()
 	{
 		// As we only use the UTC CAS for login, no password is needed.
-		return 'coincoin';
+		return null;
 	}
 	
 	/**
@@ -153,7 +153,7 @@ class Student implements UserInterface, \Serializable, EquatableInterface
 	public function getSalt()
 	{
 		// As there is no password needed, no salt is needed.
-		return '42';
+		return null;
 	}
 	
 	/**
@@ -167,6 +167,8 @@ class Student implements UserInterface, \Serializable, EquatableInterface
 	public function setRoles($roles)
 	{
 		$this->role = empty($roles) ? self::DEFAULT_ROLE : $roles[0];
+		
+		return $this;
 	}
 	
 	/**
@@ -174,28 +176,6 @@ class Student implements UserInterface, \Serializable, EquatableInterface
 	 */
 	public function eraseCredentials()
 	{
-	}
-
-	/**
-	 * @see \Serializable::serialize()
-	 */
-	public function serialize()
-	{
-		return serialize(array(
-				$this->id,
-				$this->username
-		));
-	}
-	
-	/**
-	 * @see \Serializable::unserialize()
-	 */
-	public function unserialize($serialized)
-	{
-		list (
-				$this->id,
-				$this->username
-		) = unserialize($serialized);
 	}
 	
 	public function isEqualTo(UserInterface $user)
