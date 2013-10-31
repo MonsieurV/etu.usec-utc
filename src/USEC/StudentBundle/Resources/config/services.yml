@@ -1,7 +1,14 @@
 parameters:
     sso_user_provider.class: USEC\StudentBundle\Entity\UserProvider
+    student_subscription_listener.class: USEC\StudentBundle\EventListener\StudentSubscriptionListener
 
 services:
     sso_user_provider:
         class: "%sso_user_provider.class%"
         arguments: ["@doctrine.orm.entity_manager"]
+        
+    student_subscription_listener:
+        class: %student_subscription_listener.class%
+        arguments: [ "@mailer", @templating, "%notification_subscription_from%", "%forward_subscription_from%", "%forward_subscription_to%" ]
+        tags:
+            - { name: kernel.event_listener, event: usec.events.studentsubscription, method: onSubscription }

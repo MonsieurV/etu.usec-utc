@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use USEC\StudentBundle\Entity\Student;
+use USEC\StudentBundle\Event\StudentSubscriptionEvent;
 
 class SubscriptionController extends Controller
 {
@@ -40,7 +41,7 @@ class SubscriptionController extends Controller
     	$student->setMotivation($request->request->get('motivation'));
     	$student->setInterestedIn($request->request->get('interestedIn'));
     	$student->setSkills($request->request->get('skills'));
-    	if(($isNew = $student->isRegistered()) != true)
+    	if($isNew = !$student->isRegistered())
     		$student->setIsRegistered(true);
     	
     	$validator = $this->get('validator');
@@ -53,28 +54,12 @@ class SubscriptionController extends Controller
 	    	$em = $this->getDoctrine()->getManager();
 	    	$em->persist($student);
 	    	$em->flush();
-	    	if($isNew)
-	    		$this->onSubscription($student);
+	    	if($isNew) {
+	    		$this->get('event_dispatcher')->dispatch('usec.events.studentsubscription', new StudentSubscriptionEvent($student));
+	    		return $this->redirect($this->generateUrl('subscription_form', array('postStatus' => 'toto')));
+	    	}
 	    	return $this->redirect($this->generateUrl('subscription_form', array('postStatus' => true)));
     	}
-    }
-    
-    // TODO Create a real Synfony event and deplace the event handler in a service class.
-    protected function onSubscription(Student $student) {
-    	// Send a notification to the suscriber.
-    	$message = \Swift_Message::newInstance()
-    	->setSubject('[USEC][PLATEFORME-ETU] Votre inscription a bien été prise en compte')
-    	->setFrom($this->container->getParameter('notification_subscription_from'))
-    	->setTo($student->getEmail())
-    	->setBody($this->renderView('USECStudentBundle:Subscription:notificationEmail.txt.twig', array('student' => $student)));
-    	$this->get('mailer')->send($message);
-    	// Send an email to USEC team.
-    	$message = \Swift_Message::newInstance()
-	    	->setSubject('[USEC][PLATEFORME-ETU] Inscription de ' . $student->getFirstName() . ' ' . $student->getName())
-	    	->setFrom($this->container->getParameter('forward_subscription_from'))
-	    	->setTo($this->container->getParameter('forward_subscription_to'))
-	    	->setBody($this->renderView('USECStudentBundle:Subscription:forwardEmail.txt.twig', array('student' => $student)));
-    	$this->get('mailer')->send($message);
     }
     
     public static function getNextSemestersAbrev($timestamp = NULL) {
