@@ -80,7 +80,7 @@ class Student implements UserInterface, \Serializable, EquatableInterface
 	private $endCourseSemester = null;
 
 	/**
-	 * @ORM\Column(name="skills", type="text", nullable=true, nullable=true)
+	 * @ORM\Column(name="skills", type="text", nullable=true)
 	 */
 	private $skills = null;
 	
