@@ -3,6 +3,32 @@
 {% block content %}
 <div class="row-fluid">
 	<div class="span6 offset3">
+		{% if statusPost and statusPost.success %}
+			<div class="alert alert-success">
+				<p>
+				{% if statusPost.isNew %}
+					Merci pour votre inscription !
+				{% else %}
+					Votre profil a bien été mise à jour.
+				{% endif %}
+				</p>
+			</div>
+			<br/><br/>
+			<p class="lead">
+				Et maintenant ?<br/><br/>
+				Nous vous invitons à jeter un coup d'oeil <a href="{{ path('studies_available') }}">du côté des études disponibles</a>, ou bien à retourner <a href="{{ path('homepage') }}">à la page d'accueil</a>.
+			</p>
+			</div>
+		{% elseif statusPost %}
+			<div class="alert alert-error">
+				<p>
+				Une erreur est apparue durant la soumission du formulaire. Vous pouvez réessayer ou <a href="mailto:dsi@usec-utc.fr?subject=Erreur dans le formulaire consultant">avertir la DSI de l'USEC</a> si le problème persiste.
+				</p>
+			</div>
+		{% endif %}
+	</div>
+	<div class="span6 offset3">
+		<h1>Votre profil consultant</h1>
 		<form action="{{ path('subscription_process') }}" method="post" id="subscriptionForm" class="form-horizontal">
 		    <h4>Informations de contact :</h4>
 		    <div class="control-group">
@@ -73,6 +99,13 @@
 		        <label class="control-label" for="form-skills">Quelles sont vos compétences mobilisables pour une étude ?</label>
 		        <div class="controls">
 		            <textarea name="skills" id="form-skills" rows="3" cols="50">{{ user.skills }}</textarea>
+		        </div>
+		    </div>
+			<h4>Mailing-list :</h4>
+			<div class="control-group">
+		        <div class="controls">
+		        	<input type="checkbox" name="suscribedToEmails" 
+		        		{% if not user.registered or user.suscribedtoemails %}checked{% endif %}> Je souhaite recevoir les opportunités d'étude
 		        </div>
 		    </div>
 		    <div class="form-actions">

@@ -21,11 +21,14 @@ class SubscriptionController extends Controller
 {
 	private static $LIST_COURSES = array('TC', 'GB', 'GP', 'GI', 'GM', 'GSU', 'ESCOM', 'Autre');
 	
-    public function formAction() {
+    public function formAction(Request $request) {
     	return $this->render('USECStudentBundle:Subscription:sign.html.twig', array(
     			'nextSemesters' => self::getNextSemestersAbrev(),
     			'listCourses' => self::$LIST_COURSES,
     			'user' => $this->get('security.context')->getToken()->getUser(),
+    			'statusPost' => ($request->query->get('statusPost') != null) ? 
+    				array('success' => $request->query->get('statusPost'), 'isNew' => $request->query->get('isNew'))
+    				: null,
     	));
     }
     
@@ -41,6 +44,7 @@ class SubscriptionController extends Controller
     	$student->setMotivation($request->request->get('motivation'));
     	$student->setInterestedIn($request->request->get('interestedIn'));
     	$student->setSkills($request->request->get('skills'));
+    	$student->setIsSuscribedToEmails($request->request->get('suscribedToEmails') != null);
     	if($isNew = !$student->isRegistered())
     		$student->setIsRegistered(true);
     	
@@ -48,7 +52,7 @@ class SubscriptionController extends Controller
     	$errors = $validator->validate($student);
     	
     	if(count($errors) > 0) {
-    		return $this->redirect($this->generateUrl('subscription_form', array('postStatus' => false)));
+    		return $this->redirect($this->generateUrl('subscription_form', array('statusPost' => false)));
     	}
     	else {
 	    	$em = $this->getDoctrine()->getManager();
@@ -56,9 +60,8 @@ class SubscriptionController extends Controller
 	    	$em->flush();
 	    	if($isNew) {
 	    		$this->get('event_dispatcher')->dispatch('usec.events.studentsubscription', new StudentSubscriptionEvent($student));
-	    		return $this->redirect($this->generateUrl('subscription_form', array('postStatus' => 'toto')));
 	    	}
-	    	return $this->redirect($this->generateUrl('subscription_form', array('postStatus' => true)));
+	    	return $this->redirect($this->generateUrl('subscription_form', array('statusPost' => true, 'isNew' => $isNew)));
     	}
     }
     
