@@ -22,7 +22,7 @@
 		{% elseif statusPost %}
 			<div class="alert alert-error">
 				<p>
-				Une erreur est apparue durant la soumission du formulaire. Vous pouvez réessayer ou <a href="mailto:dsi@usec-utc.fr?subject=Erreur dans le formulaire consultant">avertir la DSI de l'USEC</a> si le problème persiste.
+				Une erreur est apparue durant la soumission du formulaire. Vous pouvez réessayer ou <a href="mailto:{{ emailUsecDsi }}?subject=Erreur dans le formulaire consultant">avertir la DSI de l'USEC</a> si le problème persiste.
 				</p>
 			</div>
 		{% endif %}

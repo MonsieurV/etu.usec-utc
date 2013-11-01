@@ -12,7 +12,6 @@
 namespace USEC\StudentBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use USEC\StudentBundle\Entity\Student;
 use USEC\StudentBundle\Event\StudentSubscriptionEvent;
@@ -29,6 +28,7 @@ class SubscriptionController extends Controller
     			'statusPost' => ($request->query->get('statusPost') != null) ? 
     				array('success' => $request->query->get('statusPost'), 'isNew' => $request->query->get('isNew'))
     				: null,
+    			'emailUsecDsi' => $this->container->getParameter('email_usec_dsi'),
     	));
     }
     

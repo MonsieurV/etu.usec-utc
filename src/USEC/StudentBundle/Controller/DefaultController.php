@@ -17,11 +17,8 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('USECStudentBundle:Default:index.html.twig');
-    }
-    
-    public function studiesAction()
-    {
-    	return $this->render('USECStudentBundle:Default:studies.html.twig');
+        return $this->render('USECStudentBundle:Default:index.html.twig', array(
+        		'emailUsecContact' => $this->container->getParameter('email_usec_contact'),
+        ));
     }
 }
