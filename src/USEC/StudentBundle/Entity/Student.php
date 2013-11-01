@@ -45,9 +45,9 @@ class Student implements UserInterface, EquatableInterface
 	private $isRegistered;
 	
 	/**
-	 * @ORM\Column(name="is_suscribed_to_emails", type="boolean")
+	 * @ORM\Column(name="is_subscribed_to_emails", type="boolean")
 	 */
-	private $isSuscribedToEmails;
+	private $isSubscribedToEmails;
 	
 	/**
 	 * @ORM\Column(name="role", type="string", length=30)
@@ -121,7 +121,7 @@ class Student implements UserInterface, EquatableInterface
 	 	 * that doesn't mean that he is registered. 
 		 */
 		$this->isRegistered = false;
-		$this->isSuscribedToEmails = false;
+		$this->isSubscribedToEmails = false;
 		// Currently, we manage and persist only one role.
 		$this->role = array(self::DEFAULT_ROLE);
 		$this->isCvUploaded = false;
@@ -522,25 +522,25 @@ class Student implements UserInterface, EquatableInterface
     }
 
     /**
-     * Set isSuscribedToEmails
+     * Set isSubscribedToEmails
      *
-     * @param boolean $isSuscribedToEmails
+     * @param boolean $isSubscribedToEmails
      * @return Student
      */
-    public function setIsSuscribedToEmails($isSuscribedToEmails)
+    public function setIsSubscribedToEmails($isSubscribedToEmails)
     {
-        $this->isSuscribedToEmails = $isSuscribedToEmails;
+        $this->isSubscribedToEmails = $isSubscribedToEmails;
     
         return $this;
     }
 
     /**
-     * Get isSuscribedToEmails
+     * Get isSubscribedToEmails
      *
      * @return boolean 
      */
-    public function isSuscribedToEmails()
+    public function isSubscribedToEmails()
     {
-        return $this->isSuscribedToEmails;
+        return $this->isSubscribedToEmails;
     }
 }

@@ -25,9 +25,9 @@ class SubscriptionController extends Controller
     			'nextSemesters' => self::getNextSemestersAbrev(),
     			'listCourses' => self::$LIST_COURSES,
     			'user' => $this->get('security.context')->getToken()->getUser(),
-    			'statusPost' => ($request->query->get('statusPost') != null) ? 
-    				array('success' => $request->query->get('statusPost'), 'isNew' => $request->query->get('isNew'))
-    				: null,
+    			'statusPost' => ($request->query->get('statusPost') != null)
+			    				? array('success' => $request->query->get('statusPost'), 'isNew' => $request->query->get('isNew'))
+			    				: null,
     			'emailUsecDsi' => $this->container->getParameter('email_usec_dsi'),
     	));
     }
@@ -44,7 +44,7 @@ class SubscriptionController extends Controller
     	$student->setMotivation($request->request->get('motivation'));
     	$student->setInterestedIn($request->request->get('interestedIn'));
     	$student->setSkills($request->request->get('skills'));
-    	$student->setIsSuscribedToEmails($request->request->get('suscribedToEmails') != null);
+    	$student->setIsSubscribedToEmails($request->request->get('subscribedToEmails') != null);
     	if($isNew = !$student->isRegistered())
     		$student->setIsRegistered(true);
     	
