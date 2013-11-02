@@ -90,3 +90,8 @@ body {
     width: 600px;
 }
 
+/* Description horizontal */
+.dl-horizontal-larger dt {
+    width: 180px;
+}
+

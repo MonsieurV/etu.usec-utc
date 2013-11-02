@@ -19,11 +19,15 @@ studies_available:
     pattern:  /etudes
     defaults: { _controller: USECStudentBundle:Studies:studies }
 
+study_show:
+    pattern:  /etudes/detail/{id}
+    defaults: { _controller: USECStudentBundle:Studies:show }
+
 # Admin studies.
-studies_new:
+study_new:
     pattern:  /admin/etudes/new
     defaults: { _controller: USECStudentBundle:StudiesAdmin:new }
 
-studies_edit:
+study_edit:
     pattern:  /admin/etudes/edit/{id}
     defaults: { _controller: USECStudentBundle:StudiesAdmin:edit }
