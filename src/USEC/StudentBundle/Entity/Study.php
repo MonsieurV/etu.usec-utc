@@ -344,7 +344,7 @@ class Study {
      * @param boolean $isClosed
      * @return \USEC\StudentBundle\Entity\Study
      */
-    public function setIsClosed($isClosed) {
+    public function setClosed($isClosed) {
     	$this->closedDate = ($isClosed && $this->closedDate == null) ? new \DateTime() : null;
     	
     	return $this;
