@@ -13,7 +13,7 @@
 		{{ form_label(form) }}
 		{{ form_errors(form) }}
 		<div class="controls">
-	    	{{ form_widget(form) }}
+	    	{{ form_widget(form, {'attr': {'class': 'span10'}}) }}
 		</div>
     </div>
 {% endspaceless %}
@@ -36,7 +36,8 @@
 {% block custom_submit_widget %}
 {% spaceless %}
 	<div class="form-actions">
-		<input  type="submit" class="btn btn-primary" id="{{ id }}" name="{{ name }}" value="{{ label }}" />
+		<input  type="submit" class="btn btn-primary" id="{{ id }}" name="{{ name }}" value="{{ label }}" />  .
+{# 		TODO There should be a space here, but removing the spaceless tag don't do the trick#}
 		{% if return_path %}<a class="btn" href="{{ return_path }}">Retour</a>{% endif %}
 	</div>
 {% endspaceless %}
