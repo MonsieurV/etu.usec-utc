@@ -1,9 +1,14 @@
 {% extends 'USECStudentBundle:Default:layout.html.twig' %}
 
+{% block title %}
+{% if not user.registered %}S'inscrire comme consultant{% else %}Modifier mon profil{% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="row-fluid">
+	{% if statusPost %}
 	<div class="span6 offset3">
-		{% if statusPost and statusPost.success %}
+		{% if statusPost.success %}
 			<div class="alert alert-success">
 				<p>
 				{% if statusPost.isNew %}
@@ -18,8 +23,7 @@
 				Et maintenant ?<br/><br/>
 				Nous vous invitons à jeter un coup d'oeil <a href="{{ path('studies_available') }}">du côté des études disponibles</a>, ou bien à retourner <a href="{{ path('homepage') }}">à la page d'accueil</a>.
 			</p>
-			</div>
-		{% elseif statusPost %}
+		{% else %}
 			<div class="alert alert-error">
 				<p>
 				Une erreur est apparue durant la soumission du formulaire. Vous pouvez réessayer ou <a href="mailto:{{ emailUsecDsi }}?subject=Erreur dans le formulaire consultant">avertir la DSI de l'USEC</a> si le problème persiste.
@@ -27,6 +31,7 @@
 			</div>
 		{% endif %}
 	</div>
+	{% endif %}
 	<div class="span6 offset3">
 		<h1>Votre profil consultant</h1>
 		<form action="{{ path('subscription_process') }}" method="post" id="subscriptionForm" class="form-horizontal">
