@@ -37,5 +37,5 @@ security:
         - { path: ^/(login_check|login)$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # The routes to protect by CAS.
         - { path: ^/etudes, roles: ROLE_UTC_CAS }
-        - { path: ^/sign, roles: ROLE_UTC_CAS }
+        - { path: ^/profil, roles: ROLE_UTC_CAS }
         - { path: ^/admin, roles: ROLE_ADMIN }

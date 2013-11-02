@@ -1,17 +1,29 @@
+# Public part.
 homepage:
     pattern:  /
     defaults: { _controller: USECStudentBundle:Default:index }
 
+# Student subscription process.
 subscription_form:
-   pattern:  /sign/form
+   pattern:  /profil
    defaults: { _controller: USECStudentBundle:Subscription:form }
 
 subscription_process:
-   pattern:  /sign/process
+   pattern:  /profil/process
    defaults: { _controller: USECStudentBundle:Subscription:process }
    requirements:
        _method:  POST
 
+# Student studies process.
 studies_available:
     pattern:  /etudes
-    defaults: { _controller: USECStudentBundle:Default:studies }
+    defaults: { _controller: USECStudentBundle:Studies:studies }
+
+# Admin studies.
+studies_new:
+    pattern:  /admin/etudes/new
+    defaults: { _controller: USECStudentBundle:StudiesAdmin:new }
+
+studies_edit:
+    pattern:  /admin/etudes/edit/{id}
+    defaults: { _controller: USECStudentBundle:StudiesAdmin:edit }

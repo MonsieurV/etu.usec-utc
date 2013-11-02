@@ -16,3 +16,14 @@ USEC\StudentBundle\Entity\Student:
       - NotBlank: ~
     creationDate:
       - NotBlank: ~
+      
+USEC\StudentBundle\Entity\Study:
+  properties:
+    title:
+      - NotBlank: ~
+    description:
+      - NotBlank: ~
+    department:
+      - NotBlank: ~
+    estimatedPay:
+      - NotBlank: ~
