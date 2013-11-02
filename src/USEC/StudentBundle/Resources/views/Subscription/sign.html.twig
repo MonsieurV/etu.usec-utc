@@ -109,8 +109,7 @@
 		        </div>
 		    </div>
 		    <div class="form-actions">
-				<input  type="submit" class="btn btn-primary" id="subscription-btn-submit" data-loading-text="Enregistrement..."
-					value={% if not user.registered %}"Valider l'inscription"{% else %}"Modifier mes informations"{% endif %} />
+				<input  type="submit" class="btn btn-primary" id="subscription-btn-submit" value="{% if not user.registered %}Valider l'inscription{% else %}Modifier mes informations{% endif %}" />
 				<a class="btn" href="{{ path('homepage') }}">Retour</a>
 			</div>
 		</form>
