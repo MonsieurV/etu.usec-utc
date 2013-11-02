@@ -26,7 +26,7 @@ class SubscriptionController extends Controller
     			'listCourses' => self::$LIST_COURSES,
     			'user' => $this->get('security.context')->getToken()->getUser(),
     			'statusPost' => ($request->query->get('statusPost') != null)
-			    				? array('success' => $request->query->get('statusPost'), 'isNew' => $request->query->get('isNew'))
+			    				? array('success' => $request->query->get('success'), 'isNew' => $request->query->get('isNew'))
 			    				: null,
     			'emailUsecDsi' => $this->container->getParameter('email_usec_dsi'),
     	));
