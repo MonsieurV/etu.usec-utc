@@ -61,7 +61,8 @@ class StudiesAdminController extends Controller {
 			$em->persist($study);
 			$em->flush();
 			
-			return $this->redirect($this->generateUrl('study_show', array(
+			$redirectTo = ($study->isClosed()) ? 'study_edit' : 'study_show';
+			return $this->redirect($this->generateUrl($redirectTo, array(
 					'id' => $study->getId(),
 					'statusPost' => array('success' => true, 'isNew' => false)
 			)));
