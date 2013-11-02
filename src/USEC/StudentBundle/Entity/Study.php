@@ -17,9 +17,18 @@ use Doctrine\ORM\Mapping as ORM;
  * Study
  *
  * @ORM\Table()
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="USEC\StudentBundle\Entity\StudyRepository")
  */
 class Study {
+	public static $LIST_COURSES = array(
+			'B' => 'Biologie',
+			'TSH' => 'Technologies & Sciences humaines',
+			'Q' => 'Qualité',
+			'P' => 'Procédés',
+			'I' => 'Informatique',
+			'M' => 'Mécanique',
+			'SU' => 'Systèmes urbains',
+	);
 	
 	/**
 	 * @ORM\Column(name="id", type="integer")
@@ -41,7 +50,7 @@ class Study {
 	/**
 	 * @ORM\Column(name="department", type="string", length=20)
 	 */
-	private $department = null;
+	private $department;
 	
 	/**
 	 * @ORM\Column(name="skills_required", type="string", length=255, nullable=true)
@@ -323,6 +332,10 @@ class Study {
     public function getDepartment()
     {
         return $this->department;
+    }
+    
+    public function departmentToString() {
+    	return self::$LIST_COURSES[$this->department];
     }
     
     /**

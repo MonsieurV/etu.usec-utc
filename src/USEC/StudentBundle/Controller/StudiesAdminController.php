@@ -18,15 +18,6 @@ use USEC\StudentBundle\Entity\Study;
 use USEC\StudentBundle\Form\Type\CustomSubmitType;
 
 class StudiesAdminController extends Controller {
-	private static $LIST_COURSES = array(
-			'B' => 'Biologie',
-			'TSH' => 'Technologies & Sciences humaines',
-			'Q' => 'Qualité',
-			'P' => 'Procédés',
-			'I' => 'Informatique',
-			'M' => 'Mécanique',
-			'SU' => 'Systèmes urbains',
-	);
 	
 	public function newAction(Request $request)
 	{
@@ -42,12 +33,14 @@ class StudiesAdminController extends Controller {
 			$em->persist($study);
 			$em->flush();
 			
-			return $this->redirect($this->generateUrl('studies_edit', array('id' => $study->getId()), array(
-					'statusPost' => array('success' => true, 'isNew' => true),
+			return $this->redirect($this->generateUrl('study_show', array(
+					'id' => $study->getId(),
+					'statusPost' => array('success' => true, 'isNew' => true)
 			)));
 		}
 		
 		return $this->render('USECStudentBundle:Studies:form.html.twig', array(
+				'statusPost' => null,
 				'form' => $form->createView(),
 				'isNew' => true,
 		));
@@ -68,12 +61,14 @@ class StudiesAdminController extends Controller {
 			$em->persist($study);
 			$em->flush();
 			
-			return $this->redirect($this->generateUrl('studies_edit', array('id' => $study->getId()), array(
-					'statusPost' => array('success' => true, 'isNew' => false),
+			return $this->redirect($this->generateUrl('study_show', array(
+					'id' => $study->getId(),
+					'statusPost' => array('success' => true, 'isNew' => false)
 			)));
 		}
 		
 		return $this->render('USECStudentBundle:Studies:form.html.twig', array(
+				'statusPost' => null,
 				'form' => $form->createView(),
 				'isNew' => false,
 				'studyTitle' => $study->getTitle(),
@@ -86,7 +81,7 @@ class StudiesAdminController extends Controller {
 			->add('title', 'text', array('label' => 'Titre'))
 			->add('description', 'textarea')
 			->add('department', 'choice', array(
-					'choices' => self::$LIST_COURSES,
+					'choices' => Study::$LIST_COURSES,
 					'label' => 'Département'
 			))
 			->add('skillsRequired', 'text', array('label' => 'Compétences (facultatif)', 'required' => false))
