@@ -20,7 +20,11 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-
+    # Use custom forms.
+    form:
+        resources:
+            - 'USECStudentBundle:Form:form_default_layout.html.twig'
+            
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%

@@ -1,0 +1,43 @@
+{% block form %}
+{% spaceless %}
+	{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+	    {{ form_errors(form) }}
+	
+	{{ form_end(form) }}
+{% endspaceless %}
+{% endblock form %}
+
+{% block form_row %}
+{% spaceless %}
+	<div class="control-group">
+		{{ form_label(form) }}
+		{{ form_errors(form) }}
+		<div class="controls">
+	    	{{ form_widget(form) }}
+		</div>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block form_label %}
+{% spaceless %}
+	<label class="control-label {% if required %}required{% endif %}" for="{{ id }}">{% if label %}{{ label }}{% else %}{{ name|capitalize }}{% endif %}</label>
+{% endspaceless %}
+{% endblock form_label %}
+
+{% block submit_widget %}
+{% spaceless %}
+	<div class="form-actions">
+		<input  type="submit" class="btn btn-primary" id="{{ id }}" name="{{ name }}" value="{{ label }}" />
+	</div>
+{% endspaceless %}
+{% endblock submit_widget %}
+
+{% block custom_submit_widget %}
+{% spaceless %}
+	<div class="form-actions">
+		<input  type="submit" class="btn btn-primary" id="{{ id }}" name="{{ name }}" value="{{ label }}" />
+		{% if return_path %}<a class="btn" href="{{ return_path }}">Retour</a>{% endif %}
+	</div>
+{% endspaceless %}
+{% endblock custom_submit_widget %}
