@@ -65,6 +65,7 @@ class SubscriptionController extends Controller
     	}
     }
     
+    // TODO Move to an util class.
     public static function getNextSemestersAbrev($timestamp = NULL) {
     	if($timestamp == NULL)
     		$timestamp = time();

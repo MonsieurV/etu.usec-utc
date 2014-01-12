@@ -15,10 +15,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class StudiesController extends Controller {
-	public function studiesAction() {
+	public function indexAction() {
 		$em = $this->getDoctrine()->getManager();
-		$studies = $em->getRepository('USECStudentBundle:Study')
-			->findAllAvailable();
+		$studies = $em->getRepository('USECStudentBundle:Study')->findAllAvailable();
 		return $this->render('USECStudentBundle:Studies:list.html.twig', array(
 				'studies' => $studies,
 				'isUserAdmin' => DefaultAdminController::isUserAdmin($this->get('security.context')->getToken()->getUser(), $this),

@@ -19,7 +19,7 @@ subscription_process:
 # Student studies process.
 studies_available:
     pattern:  /etudes
-    defaults: { _controller: USECStudentBundle:Studies:studies }
+    defaults: { _controller: USECStudentBundle:Studies:index }
 
 study_show:
     pattern:  /etudes/detail/{id}
@@ -33,7 +33,7 @@ admin_index:
 # Administrate studies.
 study_admin:
     pattern:  /admin/etudes
-    defaults: { _controller: USECStudentBundle:Studies:studies }
+    defaults: { _controller: USECStudentBundle:Studies:index }
 
 study_new:
     pattern:  /admin/etudes/new
@@ -44,7 +44,7 @@ study_edit:
     defaults: { _controller: USECStudentBundle:StudiesAdmin:edit }
 
 # Administrate students.
-students_list:
+student_admin:
     pattern:  /admin/etudiants
-    defaults: { _controller: USECStudentBundle:StudentAdmin:edit }
+    defaults: { _controller: USECStudentBundle:SubscriptionAdmin:index }
     
