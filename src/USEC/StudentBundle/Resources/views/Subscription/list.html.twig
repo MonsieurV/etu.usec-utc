@@ -43,6 +43,7 @@ Etudiants inscrits
 			  	{% endif %}
 			</tbody>
 		</table>
+		<a class="btn" target="_blank" href="{{ path('student_export_excel') }}">Exporter au format Excel</a> <a class="btn" target="_blank" href="{{ path('student_export_csv') }}">Exporter au format CSV</a>
 	</div>
 </div>
 {% endblock %}

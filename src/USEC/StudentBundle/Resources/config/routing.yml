@@ -51,3 +51,11 @@ student_admin:
 student_show:
     pattern:  /admin/etudiants/{id}
     defaults: { _controller: USECStudentBundle:SubscriptionAdmin:show }
+
+student_export_csv:
+    pattern:  /admin/etudiants/export/csv
+    defaults: { _controller: USECStudentBundle:SubscriptionAdmin:exportCsv }
+  
+student_export_excel:
+    pattern:  /admin/etudiants/export/excel
+    defaults: { _controller: USECStudentBundle:SubscriptionAdmin:exportExcel }
