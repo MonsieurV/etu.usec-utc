@@ -113,6 +113,11 @@ class Student implements UserInterface, EquatableInterface
 	 * @ORM\Column(name="change_date", type="datetime", nullable=true)
 	 */
 	private $changeDate = null;
+
+	/**
+	 * @ORM\Column(name="apprenti", type"boolean", nullable=false)
+	 */
+	private $apprenti = null;
 	
 	public function __construct()
 	{
@@ -126,6 +131,7 @@ class Student implements UserInterface, EquatableInterface
 		$this->role = array(self::DEFAULT_ROLE);
 		$this->isCvUploaded = false;
 		$this->creationDate = new \DateTime();
+		$this->apprenti = false;
 	}
 	
 	/**
@@ -542,5 +548,18 @@ class Student implements UserInterface, EquatableInterface
     public function isSubscribedToEmails()
     {
         return $this->isSubscribedToEmails;
+    }
+
+
+    public function setApprenti($apprenti)
+    {
+        $this->apprenti = $apprenti;
+    
+        return $this;
+    }
+
+    public function getApprenti()
+    {
+        return $this->apprenti;
     }
 }

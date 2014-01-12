@@ -1,0 +1,92 @@
+<form action="/" id="subscriptionForm" class="form-horizontal">
+    <div class="modal-body">
+        <h4>Informations de contact :</h4>
+        <div class="control-group">
+        	<label class="control-label" for="form-first-name">Prénom :</label>
+        	<div class="controls">
+	        	<input type="text" name="firstName" id="form-first-name" required>
+        	</div>
+				</div>
+        <div class="control-group">
+        	<label class="control-label" for="form-name">Nom :</label>
+        	<div class="controls">
+	        	<input type="text" name="name" id="form-name" required>
+        	</div>
+        </div>
+				<div class="control-group">
+        	<label class="control-label" for="form-login-utc">Login UTC :</label>
+        	<div class="controls">
+        		<input type="text" name="loginUtc" id="form-login-utc" required>
+        	</div>
+       	</div>
+       	<div class="control-group">
+        	<label class="control-label" for="form-email">Email :</label>
+        	<div class="controls">
+        		<input type="email" name="email" id="form-email" required>
+        	</div>
+        </div>
+        <div class="control-group">
+        	<label class="control-label" for="form-phone">Téléphone mobile :</label>
+        	<div class="controls">
+        		<input type="text" name="phone" id="form-phone" required>
+        	</div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="form-apprenti">Apprenti(e) ?</label>
+            <div class="controls">
+                <input type="checkbox" name="apprenti" id="form-apprenti" unchecked>
+            </div>
+        </div>
+        <div class="alert alert-error" id="form-apprenti-error" style="display:none;">Nous sommes désolés mais les apprentis ne peuvent pas réaliser des études.</div>
+        <h4>Profil :</h4>
+        <div class="control-group">
+        	<label class="control-label" for="form-course">Cursus suivi :</label>
+        	<div class="controls">
+		        <select name="course" id="form-course">
+		          <option value="TC">TC</option>
+		          <option value="GB">GB</option>
+		          <option value="GP">GP</option>
+		          <option value="GI">GI</option>
+		          <option value="GM">GM</option>
+		          <option value="GSU">GSU</option>
+		        </select>
+		      </div>
+		    </div>
+		    <div class="control-group">
+	        <label class="control-label" for="form-semester-oututc">Semestre de sortie de l'UTC :</label>
+	        <div class="controls">
+		        <select name="endCourseSemester" id="form-semester-oututc">
+		        	{% for nextSemester in nextSemesters %}
+		            <option value="{{ nextSemester }}">{{ nextSemester }}</option>
+		          {% endfor %}
+		        </select>
+	        </div>
+		    </div>
+        <h4>Motivations :</h4>
+        <div class="control-group">
+        	<label class="control-label" for="form-motivation">Qu'est-ce qui vous motive à devenir consultant à l'USEC ?</label>
+        	<div class="controls">
+        		<textarea name="motivation" id="form-motivation" rows="3" cols="50" required></textarea>
+        	</div>
+        </div>
+        <div class="control-group">
+	        <label class="control-label" for="form-interested-in">Sur quels types d'étude souhaitez-vous travailler de préférence ?</label>
+	        <div class="controls">
+	        	<textarea name="interestedIn" id="form-interested-in" rows="3" cols="50"></textarea>
+        	</div>
+        </div>
+        <div class="control-group">
+        	<label class="control-label" for="form-skills">Quelles sont vos compétences mobilisables pour une étude ?</label>
+        	<div class="controls">
+        		<textarea name="skills" id="form-skills" rows="3" cols="50"></textarea>
+        	</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+    	<div id="form-alert-container"></div>
+    	<div id="form-submit-group">
+	      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+	      <input  type="submit" class="btn btn-primary" id="subscription-btn-submit" data-loading-text="Enregistrement..." value="Valider l'inscription" />
+    	</div>
+    </div>
+</form>

@@ -42,7 +42,8 @@ class SubscriptionController extends Controller
     	$student->setCourse($request->request->get('course'));
     	$student->setEndCourseSemester($request->request->get('endCourseSemester'));
     	$student->setMotivation($request->request->get('motivation'));
-    	$student->setInterestedIn($request->request->get('interestedIn'));
+    	$student->setInterestedIn($request->request->get('interestedIn'));D
+    	$student->setApprenti($request->request->get('apprenti'));
     	$student->setSkills($request->request->get('skills'));
     	$student->setIsSubscribedToEmails($request->request->get('subscribedToEmails') != null);
     	if($isNew = !$student->isRegistered())
