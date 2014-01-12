@@ -1,6 +1,6 @@
 Bonjour {{ student.firstName }} {{ student.name }},
 
-Vous venez de vous inscrire sur la plateforme étudiante de l'USEC (http://etu.usec-utc.fr), merci !
+Vous venez de vous inscrire sur la plateforme étudiante de l'USEC ({{ path('homepage') }}), merci !
 
 
 Voici les détails de votre inscription :
@@ -9,10 +9,11 @@ Voici les détails de votre inscription :
 Prénom              : {{ student.firstName }}
 Nom                 : {{ student.name }}
 Email               : {{ student.email }}
-Login UTC           : {{ student.loginUtc }}
+Login UTC           : {{ student.username }}
 Téléphone           : {{ student.phone }}
 Branche             : {{ student.course }}
 Semestre de sortie  : {{ student.endCourseSemester }}
+Mailing-list		: {% if student.subscribedToEmails %}oui{% else %}non{% endif %}
 
 --  Compétences  --
 {{ student.skills }}
@@ -22,6 +23,9 @@ Semestre de sortie  : {{ student.endCourseSemester }}
 
 --  Motivations  --
 {{ student.motivation }}
+
+
+Vous pouvez à tout moment modifier vos informations <a href="{{ path('subscription_form') }}" target="_blank">sur votre profil consultant</a href="{{ path('studies_available') }}" target="_blank"> et aller <a>consulter les études disponibles</a>.
 
 
 Cordialement,

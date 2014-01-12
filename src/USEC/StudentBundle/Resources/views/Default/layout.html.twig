@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Devenir consultant à l'USEC{% endblock %}</title>
+        <title>Usec-Etu - {% block title %}Devenir consultant à l'USEC{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	      <meta name="description" content="">
 	      <meta name="author" content="">
@@ -36,21 +36,21 @@
       		<script src="{{ asset('bundles/usecstudent/js/index.js') }}"></script>
 	      {% endblock %}
       </div>
-      <!-- Piwik -->
-			<script type="text/javascript"> 
-			  var _paq = _paq || [];
-			  _paq.push(['trackPageView']);
-			  _paq.push(['enableLinkTracking']);
-			  (function() {
-			    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.usec-utc.fr//";
-			    _paq.push(['setTrackerUrl', u+'piwik.php']);
-			    _paq.push(['setSiteId', 1]);
-			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-			    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-			  })();
-			
-			</script>
-			<noscript><p><img src="http://analytics.usec-utc.fr/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
-			<!-- End Piwik Code -->
+    <!-- Piwik -->
+	<script type="text/javascript"> 
+	  var _paq = _paq || [];
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+	    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.usec-utc.fr//";
+	    _paq.push(['setTrackerUrl', u+'piwik.php']);
+	    _paq.push(['setSiteId', 1]);
+	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+	    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	
+	</script>
+	<noscript><p><img src="http://analytics.usec-utc.fr/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+	<!-- End Piwik Code -->
     </body>
 </html>

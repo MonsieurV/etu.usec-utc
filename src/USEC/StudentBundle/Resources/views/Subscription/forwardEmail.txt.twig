@@ -1,4 +1,4 @@
-{{ student.firstName }} {{ student.name }} vient de s'inscrire sur la plateforme étudiante (http://etu.usec-utc.fr) !
+{{ student.firstName }} {{ student.name }} vient de s'inscrire sur la plateforme étudiante ({{ path('homepage') }}) !
 
 
 Détails de l'inscription :
@@ -7,10 +7,11 @@ Détails de l'inscription :
 Prénom              : {{ student.firstName }}
 Nom                 : {{ student.name }}
 Email               : {{ student.email }}
-Login UTC           : {{ student.loginUtc }}
+Login UTC           : {{ student.username }}
 Téléphone           : {{ student.phone }}
 Branche             : {{ student.course }}
 Semestre de sortie  : {{ student.endCourseSemester }}
+Mailing-list		: {% if student.subscribedToEmails %}oui{% else %}non{% endif %}
 
 --  Compétences  --
 {{ student.skills }}
@@ -21,5 +22,7 @@ Semestre de sortie  : {{ student.endCourseSemester }}
 --  Motivations  --
 {{ student.motivation }}
 
+
+Keep growing men!
 _______________________________________________________
 Cet email a été édité automatiquement par etu.usec-utc. 

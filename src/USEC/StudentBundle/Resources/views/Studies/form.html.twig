@@ -1,0 +1,25 @@
+{% extends 'USECStudentBundle:Default:layout.html.twig' %}
+
+{% block title %}
+{% if isNew %}Créer une nouvelle étude{% else %}Modifier l'étude "{{ studyTitle }}"{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+	<div class="span8 offset2">
+		<h1>{% if isNew %}Enregistrer une nouvelle étude{% else %}Modifier l'étude "{{ studyTitle }}"{% endif %}</h1>
+		{{ form(form) }}
+	</div>
+</div>
+
+{% if not isNew %}
+<hr/>
+
+<div class="row-fluid jumbotron">
+	<div class="span10 offset1">
+		<h2>Mailing</h2>
+		<p>A venir...</p>
+	</div>
+</div>
+{% endif %}
+{% endblock %}

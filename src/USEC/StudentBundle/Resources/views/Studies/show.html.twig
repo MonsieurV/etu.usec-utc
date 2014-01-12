@@ -1,0 +1,63 @@
+{% extends 'USECStudentBundle:Studies:layout.html.twig' %}
+
+{% block title %}
+Détail de l'étude - {{ study.title }}
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid jumbotron">
+		{% if statusPost %}
+		<div class="span6 offset3">
+			{% if statusPost.success %}
+			<div class="alert alert-success">
+				<p>
+				{% if statusPost.isNew %}
+					L'étude a bien été créée.
+				{% else %}
+					L'étude a bien été mise à jour.
+				{% endif %}
+				</p>
+			</div>
+			{% endif %}
+		</div>
+		{% endif %}
+	<div class="span10 offset1">
+		<h2>{{ study.title }} {% if isUserAdmin %} <a title="Editer l'étude (Admin)" href="{{ path('study_edit', { 'id' : study.id }) }}"><i class="icon-pencil"></i></a>{% endif %}</h2>
+		<p class="lead">{{ study.description }}</p><br/>
+		<dl class="dl-horizontal dl-horizontal-larger">
+			<dt>Département</dt>
+		  	<dd>{{ study.departmentToString }}</dd>
+		  	{% if study.company is not null %}
+			  	<dt>Entreprise</dt>
+			  	<dd>{{ study.company }}</dd>
+		  	{% endif %}
+		  	{% if study.skillsRequired is not null %}
+			  	<dt>Compétences requises</dt>
+			  	<dd>{{ study.skillsRequired }}</dd>
+		  	{% endif %}
+		  	<dt>Rémunération estimée</dt>
+		  	<dd>{{ study.estimatedPay }}</dd>
+		  	<dt>Date de publication</dt>
+		  	<dd>{{ study.creationDate|date("d/m/Y") }}</dd>
+		  	{% if study.changeDate is not null %}
+			  	<dt>Dernières mise-à-jour</dt>
+			  	<dd>{{ study.changeDate|date("d/m/Y") }}</dd>
+		  	{% endif %}
+		  	<dt>Publiée par</dt>
+		  	<dd>{{ createdByLogin }}</dd>
+		</dl>
+	</div>
+</div>
+<div class="text-right">
+	<a class="btn" href="{{ path('studies_available') }}">Retour à la liste</a>
+</div>
+
+<hr/>
+
+<div class="row-fluid jumbotron">
+	<div class="span10 offset1">
+		<h2>Je postule</h2>
+		<p>A venir...</p>
+	</div>
+</div>
+{% endblock %}

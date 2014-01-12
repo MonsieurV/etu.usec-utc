@@ -14,14 +14,17 @@ framework:
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     default_locale:  %locale%
-    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     session:         ~
 
 # Twig Configuration
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-
+    # Use custom forms.
+    form:
+        resources:
+            - 'USECStudentBundle:Form:form_default_layout.html.twig'
+            
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
@@ -57,3 +60,15 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+# SSO by CAS (for doc, see: https://github.com/BeSimple/BeSimpleSsoAuthBundle/blob/master/Resources/doc/index.md)
+be_simple_sso_auth:
+  utc_sso:
+    protocol:
+        id: cas
+        version: 2
+    server:
+        id: cas
+        login_url: https://cas.utc.fr/cas/login
+        logout_url: https://cas.utc.fr/cas/logout
+        validation_url: https://cas.utc.fr/cas/serviceValidate

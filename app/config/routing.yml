@@ -1,3 +1,6 @@
 usec_student_home:
     resource: "@USECStudentBundle/Resources/config/routing.yml"
     prefix:   /
+
+login_check:
+    path: /login_check

@@ -1,4 +1,12 @@
 parameters:
-    forward_subscription_to: [rh@usec-utc.fr, contact@usec-utc.fr]
-    forward_subscription_from: postmaster@usec-utc.fr
-    notification_subscription_from: contact@usec-utc.fr
+    # Emails USEC
+    email_usec_contact: contact@usec-utc.fr
+    email_usec_rh: rh@usec-utc.fr
+    email_usec_dsi: dsi@usec-utc.fr
+    email_usec_post: postmaster@usec-utc.fr
+    # Emails auxquels on transfère chaque notification d'inscription.
+    forward_subscription_to: [ %email_usec_rh%, %email_usec_contact% ]
+    # De la part de qui l'email est envoyé.
+    forward_subscription_from: %email_usec_post%
+    # De la part de qui l'email de confirmation d'inscription est envoyé à l'étudiant.
+    notification_subscription_from: %email_usec_contact%

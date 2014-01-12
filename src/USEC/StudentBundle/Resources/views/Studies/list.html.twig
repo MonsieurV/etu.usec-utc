@@ -1,0 +1,57 @@
+{% extends 'USECStudentBundle:Studies:layout.html.twig' %}
+
+{% block title %}
+Les études disponibles
+{% endblock %}
+
+{% block content %}
+<!-- Jumbotron -->
+<div class="row-fluid jumbotron">
+	<div class="span9">
+		<h1>Les études actuellement disponibles</h1>
+	</div>
+	<div class="span3">
+    	<img class="img-rounded" id="img-jombotron" src="{{ asset('bundles/usecstudent/img/sceau_etudiant_r9d.png') }}" />
+	</div>
+</div>
+        
+<hr>
+
+<div class="row-fluid anchor-target" id="studies-current">
+	<div class="span10 offset1">
+    	<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+			    	<th>Titre</th>
+					<th>Département</th>
+					<th>Compétences requises</th>
+			      	<th>Entreprise</th>
+			      	<th>Rémunération (estimation)</th>
+			    </tr>
+			</thead>
+			<tbody>
+				{% if studies is empty %}
+			  	<tr>
+			  		<td>Aucune étude n'est actuellement à pourvoir</td>
+			  	</tr>
+			  	{% else %}
+			  	{% for study in studies %}
+			    <tr>
+			    	<td>
+			    		<a href="{{ path('study_show',{ 'id' : study.id}) }}">{{ study.title }}</a>
+			    		{% if isUserAdmin %} <a title="Editer l'étude (Admin)" href="{{ path('study_edit', { 'id' : study.id }) }}"><i class="icon-pencil"></i></a>{% endif %}
+		    		</td>
+			      	<td>{{ study.departmentToString }}</td>
+			      	<td>{{ study.skillsRequired }}</td>
+			      	<td>{{ study.company }}</td>
+			      	<td>{{ study.estimatedPay }}</td>
+			    </tr>
+			    {% endfor %}
+			  	{% endif %}
+			</tbody>
+		</table>
+		{% if isUserAdmin %} <a class="btn btn-primary" href="{{ path('study_new') }}"><i class="icon-plus"></i> Publier une nouvelle étude</a>{% endif %}
+	</div>
+</div>
+{% endblock %}
+

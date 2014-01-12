@@ -8,11 +8,22 @@ USEC\StudentBundle\Entity\Student:
       - NotBlank: ~
     firstName:
       - NotBlank: ~
-    loginUtc:
+    username:
       - NotBlank: ~
     course:
       - NotBlank: ~
     endCourseSemester:
       - NotBlank: ~
     creationDate:
+      - NotBlank: ~
+      
+USEC\StudentBundle\Entity\Study:
+  properties:
+    title:
+      - NotBlank: ~
+    description:
+      - NotBlank: ~
+    department:
+      - NotBlank: ~
+    estimatedPay:
       - NotBlank: ~
