@@ -47,4 +47,7 @@ study_edit:
 student_admin:
     pattern:  /admin/etudiants
     defaults: { _controller: USECStudentBundle:SubscriptionAdmin:index }
-    
+
+student_show:
+    pattern:  /admin/etudiants/{id}
+    defaults: { _controller: USECStudentBundle:SubscriptionAdmin:show }

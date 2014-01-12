@@ -1,0 +1,49 @@
+{% extends 'USECStudentBundle:Default:layout.html.twig' %}
+
+{% block title %}
+Etudiants inscrits
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+	<div class="span9 offset1">
+		<h1>Etudiants inscrits</h1>
+	</div>
+</div>
+        
+<hr>
+
+<div class="row-fluid anchor-target" id="studients">
+	<div class="span10 offset1">
+    	<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+			    	<th>Prénom NOM</th>
+					<th>Login Utc</th>
+					<th>Email & Téléphone</th>
+			      	<th>Filière</th>
+			      	<th>Compétences</th>
+			    </tr>
+			</thead>
+			<tbody>
+				{% if students is empty %}
+			  	<tr>
+			  		<td>Aucun étudiant actuellement inscrit (Wat?)</td>
+			  	</tr>
+			  	{% else %}
+			  	{% for student in students %}
+			    <tr>
+			    	<td><a href="{{ path('student_show',{ 'id' : student.id}) }}">{{ student.firstName }} {{ student.name|upper }}</a></td>
+			      	<td>{{ student.username }}</td>
+			      	<td>{{ student.email }}<br/>{{ student.phone }}</td>
+			      	<td>{{ student.course }}</td>
+			      	<td>{{ student.skills }}}</td>
+			    </tr>
+			    {% endfor %}
+			  	{% endif %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}
+

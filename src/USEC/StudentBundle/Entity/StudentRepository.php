@@ -12,4 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class StudentRepository extends EntityRepository
 {
+	public function findAllSubscribed() {
+		return $this->getEntityManager()
+		->createQuery(
+				'SELECT s FROM USECStudentBundle:Student s
+				WHERE s.isRegistered = 1
+				ORDER BY s.creationDate ASC'
+		)
+		->getResult();
+	}
+	
+	public function findOneSubscribed($id) {
+		return $this->getEntityManager()
+		->createQuery(
+				'SELECT s FROM USECStudentBundle:Student s
+				WHERE s.isRegistered = 1
+				AND s.id = :id'
+		)
+		->setMaxResults(1)
+		->setParameter('id', $id)
+		->getOneOrNullResult();
+	}
 }
