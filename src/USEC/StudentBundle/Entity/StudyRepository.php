@@ -36,8 +36,7 @@ class StudyRepository extends EntityRepository
 		->createQuery(
 				'SELECT s FROM USECStudentBundle:Study s
 				WHERE s.closedDate IS NULL
-				AND s.id = :id
-				ORDER BY s.creationDate ASC'
+				AND s.id = :id'
 		)
 		->setMaxResults(1)
 		->setParameter('id', $id)
