@@ -103,7 +103,7 @@ class SubscriptionAdminController extends Controller
 			->setCellValue('F' . $i, $student->getUsername())
 			->setCellValue('G' . $i, $student->getCourse())
 			->setCellValue('H' . $i, $student->getEndCourseSemester())
-			//->setCellValue('I' . $i, $student->getApprenti())
+			->setCellValue('I' . $i, $student->getApprenti())
 			->setCellValue('J' . $i, $student->getSkills())
 			->setCellValue('K' . $i, $student->getInterestedIn())
 			->setCellValue('L' . $i, $student->getMotivation())
