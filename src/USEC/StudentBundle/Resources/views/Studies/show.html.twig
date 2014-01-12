@@ -38,10 +38,10 @@ Détail de l'étude - {{ study.title }}
 		  	<dt>Rémunération estimée</dt>
 		  	<dd>{{ study.estimatedPay }}</dd>
 		  	<dt>Date de publication</dt>
-		  	<dd>{{ study.creationDate|date("m/d/Y") }}</dd>
+		  	<dd>{{ study.creationDate|date("d/m/Y") }}</dd>
 		  	{% if study.changeDate is not null %}
 			  	<dt>Dernières mise-à-jour</dt>
-			  	<dd>{{ study.changeDate|date("m/d/Y") }}</dd>
+			  	<dd>{{ study.changeDate|date("d/m/Y") }}</dd>
 		  	{% endif %}
 		  	<dt>Publiée par</dt>
 		  	<dd>{{ createdByLogin }}</dd>
