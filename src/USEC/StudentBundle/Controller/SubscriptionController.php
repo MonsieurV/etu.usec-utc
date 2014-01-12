@@ -44,7 +44,8 @@ class SubscriptionController extends Controller
     	$student->setEndCourseSemester($request->request->get('endCourseSemester'));
     	$student->setMotivation($request->request->get('motivation'));
     	$student->setInterestedIn($request->request->get('interestedIn'));
-    	$student->setSkills($request->request->get('skills'));
+        $student->setSkills($request->request->get('skills'));
+    	$student->setApprenti($request->request->get('apprenti'));
     	
     	$validator = $this->get('validator');
     	$errors = $validator->validate($student);

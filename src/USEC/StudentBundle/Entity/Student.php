@@ -117,7 +117,9 @@ class Student
 	 *
 	 * @ORM\Column(name="change_date", type="datetime", nullable=true)
 	 */
-	private $changeDate = null;
+    private $changeDate = null;
+
+	private $apprenti = null;
 
 
     /**
@@ -450,5 +452,29 @@ class Student
     public function getChangeDate()
     {
         return $this->changeDate;
+    }
+
+
+    /**
+     * Set changeDate
+     *
+     * @param \DateTime $changeDate
+     * @return Student
+     */
+    public function setApprenti($apprenti)
+    {
+        $this->apprenti = $apprenti;
+    
+        return $this;
+    }
+
+    /**
+     * Get changeDate
+     *
+     * @return \DateTime 
+     */
+    public function getApprenti()
+    {
+        return $this->apprenti;
     }
 }
