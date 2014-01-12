@@ -115,7 +115,7 @@ class Student implements UserInterface, EquatableInterface
 	private $changeDate = null;
 
 	/**
-	 * @ORM\Column(name="apprenti", type"boolean", nullable=false)
+	 * @ORM\Column(name="apprenti", type="boolean", nullable=false)
 	 */
 	private $apprenti = null;
 	
@@ -561,5 +561,25 @@ class Student implements UserInterface, EquatableInterface
     public function getApprenti()
     {
         return $this->apprenti;
+    }
+
+    /**
+     * Get isRegistered
+     *
+     * @return boolean 
+     */
+    public function getIsRegistered()
+    {
+        return $this->isRegistered;
+    }
+
+    /**
+     * Get isSubscribedToEmails
+     *
+     * @return boolean 
+     */
+    public function getIsSubscribedToEmails()
+    {
+        return $this->isSubscribedToEmails;
     }
 }

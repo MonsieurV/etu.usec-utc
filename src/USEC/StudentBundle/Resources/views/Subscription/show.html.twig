@@ -25,6 +25,8 @@ Profil de l'étudiant - {{ student.firstName }} {{ student.name|upper }}
 			<dd>{{ student.email }}</dd>
 			<dt>Téléphone</dt>
 			<dd>{{ student.phone }}</dd>
+			<dt>Apprenti</dt>
+			<dd>{% if student.apprenti %}oui{% else %}non{% endif %}</dd>
 			<hr/>
 			
 			<dt>Notifications email</dt>

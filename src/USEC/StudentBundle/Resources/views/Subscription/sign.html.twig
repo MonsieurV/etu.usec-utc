@@ -69,7 +69,7 @@
 		    <div class="control-group">
 	            <label class="control-label" for="form-apprenti">Apprenti(e) ?</label>
 	            <div class="controls">
-	                <input type="checkbox" name="apprenti" id="form-apprenti" unchecked>
+	                <input type="checkbox" name="apprenti" id="form-apprenti" {% if not user.apprenti %}checked{% endif %}>
 	            </div>
 	        </div>
 	        <div class="alert alert-error" id="form-apprenti-error" style="display:none;">Nous sommes désolés, mais les apprentis ne peuvent pas réaliser d'études.</div>
@@ -127,8 +127,12 @@
 		</form>
 	</div>
 </div>
+{% endblock %}
 
-<script type="text/javascript">
+{% block javascripts %}
+	<script src="{{ asset('bundles/usecstudent/js/jquery.js') }}"></script>
+	<script src="{{ asset('bundles/usecstudent/js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript">
 $(document).ready(function() {
     $('#form-apprenti').on('change',function(event){
         if($(this).is(':checked')){
@@ -138,5 +142,5 @@ $(document).ready(function() {
         }
    });
 });
-</script>
+	</script>
 {% endblock %}
