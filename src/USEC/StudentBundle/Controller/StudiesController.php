@@ -21,7 +21,7 @@ class StudiesController extends Controller {
 			->findAllAvailable();
 		return $this->render('USECStudentBundle:Studies:list.html.twig', array(
 				'studies' => $studies,
-				'isUserAdmin' => $this->isUserAdmin($this->get('security.context')->getToken()->getUser()),
+				'isUserAdmin' => DefaultAdminController::isUserAdmin($this->get('security.context')->getToken()->getUser(), $this),
 		));
 	}
 	
@@ -37,19 +37,10 @@ class StudiesController extends Controller {
 		return $this->render('USECStudentBundle:Studies:show.html.twig', array(
 				'study' => $study,
 				'createdByLogin' => $student->getUsername(),
-				'isUserAdmin' => $this->isUserAdmin($this->get('security.context')->getToken()->getUser()),
+				'isUserAdmin' => DefaultAdminController::isUserAdmin($this->get('security.context')->getToken()->getUser(), $this),
 				'statusPost' => ($statusPost != null)
 					? array('success' => $statusPost['success'], 'isNew' => $statusPost['isNew'])
 					: null,
-		));
-	}
-	
-	// TODO To move to an Util class.
-	public function isUserAdmin($user) {
-		return in_array($user->getRole(), array(
-				$this->container->getParameter('role_admin'),
-				$this->container->getParameter('role_allowed_to_switch'),
-				$this->container->getParameter('role_super_admin'),
 		));
 	}
 }

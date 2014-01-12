@@ -1,0 +1,19 @@
+{% extends 'USECStudentBundle:Default:layout.html.twig' %}
+
+{% block title %}
+Portail d'administration
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+	<div class="span9 offset1">
+		<h1>Portail d'administration</h1>
+	</div>
+</div>
+        
+<ul>
+  <li><a href="{{ path('students_list') }}">Etudiants inscrits comme consultants</a></li>
+  <li><a href="{{ path('studies_available') }}">Etudes disponibles</a></li>
+</ul>
+
+{% endblock %}

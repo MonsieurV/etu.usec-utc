@@ -1,8 +1,10 @@
-# Public part.
+# PUBLIC PART. #
 homepage:
     pattern:  /
     defaults: { _controller: USECStudentBundle:Default:index }
 
+
+# RESTRICTED TO UTC STUDENTS. #
 # Student subscription process.
 subscription_form:
    pattern:  /profil
@@ -23,7 +25,16 @@ study_show:
     pattern:  /etudes/detail/{id}
     defaults: { _controller: USECStudentBundle:Studies:show }
 
-# Admin studies.
+# RESTRICTED TO USEC ADMINISTRATORS #
+admin_index:
+    pattern:  /admin
+    defaults: { _controller: USECStudentBundle:DefaultAdmin:index }
+
+# Administrate studies.
+study_admin:
+    pattern:  /admin/etudes
+    defaults: { _controller: USECStudentBundle:Studies:studies }
+
 study_new:
     pattern:  /admin/etudes/new
     defaults: { _controller: USECStudentBundle:StudiesAdmin:new }
@@ -31,3 +42,9 @@ study_new:
 study_edit:
     pattern:  /admin/etudes/edit/{id}
     defaults: { _controller: USECStudentBundle:StudiesAdmin:edit }
+
+# Administrate students.
+students_list:
+    pattern:  /admin/etudiants
+    defaults: { _controller: USECStudentBundle:StudentAdmin:edit }
+    
