@@ -17,7 +17,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body data-spy="scroll" data-target=".navbar">
+    <body>
     	<div class="container" id="main-container">
     		{% block body %}
 		    	{% block navbar %}{% endblock %}
@@ -47,7 +47,6 @@
 	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
 	    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 	  })();
-	
 	</script>
 	<noscript><p><img src="http://analytics.usec-utc.fr/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
 	<!-- End Piwik Code -->
