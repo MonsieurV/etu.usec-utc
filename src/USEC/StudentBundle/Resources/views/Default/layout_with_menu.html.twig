@@ -3,7 +3,6 @@
 {% block navbar %}
 <div class="navbar navbar-inverse">
     <div class="navbar-inner">
-    	<a class="brand" href="{{ path('homepage') }}#">Plateforme étudiante</a>
         <div class="container">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 			<span class="icon-bar"></span>
@@ -12,6 +11,7 @@
         </button>
         <div class="nav-collapse collapse">
 			<ul class="nav">
+				<li><a href="{{ path('homepage') }}#">Accueil</a></li>
 				<li><a href="{{ path('subscription_form') }}">Mon profil</a></li>
             	<li><a href="{{ path('studies_available') }}">Les études disponibles</a></li>
             	<li><a href="{{ path('homepage') }}#contact">Contact</a></li>
