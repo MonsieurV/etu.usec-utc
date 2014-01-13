@@ -1,4 +1,6 @@
-{% extends 'USECStudentBundle:Default:layout_with_menu.html.twig' %}
+{% extends isUserAdmin 
+    ? 'USECStudentBundle:Default:layout_admin.html.twig' 
+    : 'USECStudentBundle:Default:layout_with_menu.html.twig' %}
 
 {% block title %}
 Les études disponibles

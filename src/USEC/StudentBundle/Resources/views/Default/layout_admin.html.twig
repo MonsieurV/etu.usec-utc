@@ -1,0 +1,9 @@
+{% extends 'USECStudentBundle:Default:layout_with_menu.html.twig' %}
+
+{% block navbaradmin %}
+<ul class="nav nav-tabs">
+  <li class="nav-header">Administration</li>
+  <li><a href="{{ path('student_admin') }}#">Etudiants inscrits</a></li>
+  <li><a href="{{ path('study_admin') }}#">Gérer les études</a></li>
+</ul>
+{% endblock %}
