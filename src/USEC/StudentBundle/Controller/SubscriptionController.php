@@ -28,6 +28,7 @@ class SubscriptionController extends Controller
     			'statusPost' => ($request->query->get('statusPost') != null)
 			    				? array('success' => $request->query->get('statusPost'), 'isNew' => $request->query->get('isNew'))
 			    				: null,
+    			'registerFirst' => ($request->query->get('registerFirst') != null) ? true : false, 
     			'emailUsecDsi' => $this->container->getParameter('email_usec_dsi'),
     	));
     }

@@ -32,6 +32,9 @@
 		{% endif %}
 	</div>
 	{% endif %}
+	{% if registerFirst %}
+		<p class="lead">Nous vous invitons à créer votre profil avant de consulter les études disponibles.</p>
+	{% endif %}
 	<div class="span6 offset3">
 		<h1>Votre profil consultant</h1>
 		<form action="{{ path('subscription_process') }}" method="post" id="subscriptionForm" class="form-horizontal">
