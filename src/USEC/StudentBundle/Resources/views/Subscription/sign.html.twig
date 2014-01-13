@@ -72,7 +72,7 @@
 		    <div class="control-group">
 	            <label class="control-label" for="form-apprenti">Apprenti(e) ?</label>
 	            <div class="controls">
-	                <input type="checkbox" name="apprenti" id="form-apprenti" {% if not user.apprenti %}checked{% endif %}>
+	                <input type="checkbox" name="apprenti" id="form-apprenti" {% if user.apprenti %}checked{% endif %}>
 	            </div>
 	        </div>
 	        <div class="alert alert-error" id="form-apprenti-error" style="display:none;">Nous sommes désolés, mais les apprentis ne peuvent pas réaliser d'études.</div>
