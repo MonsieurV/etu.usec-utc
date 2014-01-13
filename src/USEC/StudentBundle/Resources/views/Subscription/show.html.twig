@@ -33,7 +33,7 @@ Profil de l'étudiant - {{ student.firstName }} {{ student.name|upper }}
 			<dd>{% if student.isSubscribedToEmails %}oui{% else %}non{% endif %}</dd>
 			<dt>Droits d'admin</dt>
 			<dd>{{ student.role }}</dd>
-		  	<dt>Date de'inscription</dt>
+		  	<dt>Date d'inscription</dt>
 		  	<dd>{{ student.creationDate|date("d/m/Y") }}</dd>
 		  	{% if student.changeDate is not null %}
 			  	<dt>Dernière mise-à-jour</dt>
