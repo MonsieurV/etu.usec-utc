@@ -1,3 +1,4 @@
+{% autoescape false %}
 {{ student.firstName }} {{ student.name }} vient de s'inscrire sur la plateforme étudiante ({{ path('homepage') }}) !
 
 
@@ -25,4 +26,5 @@ Mailing-list		: {% if student.subscribedToEmails %}oui{% else %}non{% endif %}
 
 Keep growing men!
 _______________________________________________________
-Cet email a été édité automatiquement par etu.usec-utc. 
+Cet email a été édité automatiquement par etu.usec-utc.
+{% endautoescape %}

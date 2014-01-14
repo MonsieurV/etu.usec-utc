@@ -1,3 +1,4 @@
+{% autoescape false %}
 Bonjour {{ student.firstName }} {{ student.name }},
 
 Vous venez de vous inscrire sur la plateforme étudiante de l'USEC ({{ path('homepage') }}), merci !
@@ -31,4 +32,5 @@ Vous pouvez à tout moment modifier vos informations <a href="{{ path('subscript
 Cordialement,
 L'USEC.
 _______________________________________________________
-Cet email a été édité automatiquement par etu.usec-utc. 
+Cet email a été édité automatiquement par etu.usec-utc.
+{% endautoescape %}
