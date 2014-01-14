@@ -35,14 +35,14 @@ class StudentSubscriptionListener {
 		->setSubject('[USEC][PLATEFORME-ETU] Votre inscription a bien été prise en compte')
 		->setFrom($this->notificationSubscriptionFrom)
 		->setTo($student->getEmail())
-		->setBody($this->templating->renderResponse('USECStudentBundle:Subscription:notificationEmail.txt.twig', array('student' => $student)));
+		->setBody($this->templating->renderResponse('USECStudentBundle:Subscription:notificationEmail.txt.twig', array('student' => $student))->getContent(), 'text/plain');
 		$this->mailer->send($message);
 		// Send an email to USEC team.
 		$message = \Swift_Message::newInstance()
 		->setSubject('[USEC][PLATEFORME-ETU] Inscription de ' . $student->getFirstName() . ' ' . $student->getName())
 		->setFrom($this->forwardSubscriptionFrom)
 		->setTo($this->forwardSubscriptionTo)
-		->setBody($this->templating->renderResponse('USECStudentBundle:Subscription:forwardEmail.txt.twig', array('student' => $student)));
+		->setBody($this->templating->renderResponse('USECStudentBundle:Subscription:forwardEmail.txt.twig', array('student' => $student))->getContent(), 'text/plain');
 		$this->mailer->send($message);
 	}
 }

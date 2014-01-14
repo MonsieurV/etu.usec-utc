@@ -14,13 +14,13 @@ Semestre de sortie  : {{ student.endCourseSemester }}
 Mailing-list		: {% if student.subscribedToEmails %}oui{% else %}non{% endif %}
 
 --  Compétences  --
-{{ student.skills }}
+{{ student.skills|raw }}
 
 -- Intéressé par --
-{{ student.interestedIn }}
+{{ student.interestedIn|raw }}
 
 --  Motivations  --
-{{ student.motivation }}
+{{ student.motivation|raw }}
 
 
 Keep growing men!
