@@ -1,7 +1,6 @@
-{% autoescape false %}
 Bonjour {{ student.firstName }} {{ student.name }},
 
-Vous venez de vous inscrire sur la plateforme étudiante de l'USEC ({{ path('homepage') }}), merci !
+Vous venez de vous inscrire sur la plateforme étudiante de l'USEC ({{ url('homepage') }}), merci !
 
 
 Voici les détails de votre inscription :
@@ -26,11 +25,10 @@ Mailing-list		: {% if student.subscribedToEmails %}oui{% else %}non{% endif %}
 {{ student.motivation }}
 
 
-Vous pouvez à tout moment modifier vos informations <a href="{{ path('subscription_form') }}" target="_blank">sur votre profil consultant</a href="{{ path('studies_available') }}" target="_blank"> et aller <a>consulter les études disponibles</a>.
+Vous pouvez à tout moment modifier vos informations <a href="{{ url('subscription_form') }}" target="_blank">sur votre profil consultant</a> et aller <a href="{{ url('studies_available') }}" target="_blank">consulter les études disponibles</a>.
 
 
 Cordialement,
 L'USEC.
 _______________________________________________________
 Cet email a été édité automatiquement par etu.usec-utc.
-{% endautoescape %}

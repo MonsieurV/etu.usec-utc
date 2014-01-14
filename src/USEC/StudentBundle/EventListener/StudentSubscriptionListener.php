@@ -32,6 +32,7 @@ class StudentSubscriptionListener {
 		$student = $event->getStudent();
 		// Send a notification to the suscriber.
 		$message = \Swift_Message::newInstance()
+		->setContentType("text/html")
 		->setSubject('[USEC][PLATEFORME-ETU] Votre inscription a bien été prise en compte')
 		->setFrom($this->notificationSubscriptionFrom)
 		->setTo($student->getEmail())
@@ -39,6 +40,7 @@ class StudentSubscriptionListener {
 		$this->mailer->send($message);
 		// Send an email to USEC team.
 		$message = \Swift_Message::newInstance()
+		->setContentType("text/html")
 		->setSubject('[USEC][PLATEFORME-ETU] Inscription de ' . $student->getFirstName() . ' ' . $student->getName())
 		->setFrom($this->forwardSubscriptionFrom)
 		->setTo($this->forwardSubscriptionTo)
