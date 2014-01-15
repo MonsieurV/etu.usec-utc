@@ -79,6 +79,8 @@ class SubscriptionController extends Controller
     		// Printemps (Février, ..., Août).
     		$currentSemester = 'P';
     	} // Else : Automne (Septembre, ..., Janvier).
+    	if($currentMonth == 1)
+    		$currentYear--;
     	for($i = 0; $i < 11; $i++) {
     		$nextSemesters[] = $currentSemester . (($currentYear < 10) ? 0 . $currentYear : $currentYear);
     		if($currentSemester == 'A')
