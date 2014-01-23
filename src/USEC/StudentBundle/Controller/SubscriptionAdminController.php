@@ -109,7 +109,7 @@ class SubscriptionAdminController extends Controller
 			->setCellValue('L' . $i, $student->getMotivation())
 			->setCellValue('M' . $i, $student->getIsCvUploaded())
 			->setCellValue('N' . $i, $student->getCreationDate()->format("d/m/Y"))
-			->setCellValue('O' . $i, $student->getChangeDate()->format("d/m/Y"));
+			->setCellValue('O' . $i, $student->getChangeDate() != NULL ? $student->getChangeDate()->format("d/m/Y") : "Jamais modifié");
 			$i++;
 		}
 		$phpExcelObject->getActiveSheet()->setTitle('Etudiants inscrits');
