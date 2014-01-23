@@ -1,0 +1,16 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: usecetu
+    database_user: usecetu
+    database_password: 
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 6e625ca5ed1a9cf041788c6a1682586aa17476f9
+    database_path: null
+    # Disable SSL (For dev. only)
+    # be_simple.sso_auth.client.option.curlopt_ssl_verifypeer.value: FALSE

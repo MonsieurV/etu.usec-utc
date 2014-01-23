@@ -1,3 +1,4 @@
+# SSO by CAS (for doc, see: https://github.com/BeSimple/BeSimpleSsoAuthBundle/blob/master/Resources/doc/index.md)
 parameters:
     role_student: ROLE_UTC_CAS
     role_admin: ROLE_ADMIN
