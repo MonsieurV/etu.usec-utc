@@ -22,6 +22,9 @@ security:
         secured_area:
             pattern: ^/
             anonymous: ~
+            logout:
+                path:   /logout
+                target: /
             trusted_sso:
                 manager: utc_sso
                 # We don't need login nor logout action, as we uniquely use the CAS.

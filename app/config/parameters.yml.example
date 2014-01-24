@@ -12,5 +12,9 @@ parameters:
     locale: en
     secret: 6e625ca5ed1a9cf041788c6a1682586aa17476f9
     database_path: null
-    # Disable SSL (For dev. only)
+    # CAS parameters
+    cas_login_url: https://cas.utc.fr/cas/login
+    cas_logout_url: https://cas.utc.fr/cas/logout
+    cas_validation_url: https://cas.utc.fr/cas/serviceValidate
+    # Disable SSL for CAS (For dev. only)
     # be_simple.sso_auth.client.option.curlopt_ssl_verifypeer.value: FALSE

@@ -2,8 +2,7 @@
 homepage:
     pattern:  /
     defaults: { _controller: USECStudentBundle:Default:index }
-
-
+    
 # RESTRICTED TO UTC STUDENTS. #
 # Student subscription process.
 subscription_form:

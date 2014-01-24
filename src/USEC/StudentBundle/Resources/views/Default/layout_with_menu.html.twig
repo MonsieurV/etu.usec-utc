@@ -16,6 +16,11 @@
             	<li><a href="{{ path('studies_available') }}">Les études disponibles</a></li>
             	<li><a href="{{ path('homepage') }}#contact">Contact</a></li>
 			</ul>
+            {% if app.user is not null %}
+			<ul class="nav pull-right">
+				    <li><a href="{{ path('logout') }}">{{ app.user.username }} (se déconnecter)</a></li>
+			</ul>
+			{% endif %}
         </div>
       </div>
     </div>
